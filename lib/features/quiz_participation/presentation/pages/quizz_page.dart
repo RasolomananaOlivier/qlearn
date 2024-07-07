@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:q_learn/core/common/app_bar_back_button.dart';
+import 'package:q_learn/core/config/router/app_router.dart';
 import 'package:q_learn/features/answer_management/domain/models/answer.dart';
 import 'package:q_learn/features/question_management/domain/models/question.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
@@ -16,6 +17,7 @@ class QuizzPage extends StatefulWidget {
 
 class _QuizzPageState extends State<QuizzPage> {
   int step = 1;
+  final PageController controller = PageController();
 
   Quiz quiz = Quiz(
     id: 1,
@@ -59,6 +61,21 @@ class _QuizzPageState extends State<QuizzPage> {
     ],
   );
 
+  void handleClick() {
+    if (step < quiz.questions.length) {
+      setState(() {
+        step += 1;
+
+        controller.nextPage(
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.linear,
+        );
+      });
+    } else {
+      context.router.replace(const ResultRoute());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +88,7 @@ class _QuizzPageState extends State<QuizzPage> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(left: 30),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: handleClick,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blueAccent.shade400,
             minimumSize: const Size.fromHeight(44),
@@ -103,7 +120,7 @@ class _QuizzPageState extends State<QuizzPage> {
           ),
 
           // Quizz Stepper
-          QuizzStepper(questions: quiz.questions),
+          QuizzStepper(questions: quiz.questions, controller: controller),
         ],
       ),
     );

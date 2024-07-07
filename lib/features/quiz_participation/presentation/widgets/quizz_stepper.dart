@@ -6,9 +6,11 @@ class QuizzStepper extends StatefulWidget {
   QuizzStepper({
     super.key,
     required this.questions,
+    required this.controller,
   });
 
   List<Question> questions;
+  PageController controller;
 
   @override
   _QuizzStepperState createState() => _QuizzStepperState();
@@ -22,7 +24,11 @@ class _QuizzStepperState extends State<QuizzStepper> {
         .toList();
 
     return Expanded(
-      child: PageView(children: quizzSteps),
+      child: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: widget.controller,
+        children: quizzSteps,
+      ),
     );
   }
 }
