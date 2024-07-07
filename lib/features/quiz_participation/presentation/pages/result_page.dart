@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:q_learn/core/config/router/app_router.dart';
 
 @RoutePage()
 class ResultPage extends StatefulWidget {
@@ -10,7 +11,9 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  void handleClick() {}
+  void handleClick() {
+    context.router.replaceAll([const ClientHomeRoute()]);
+  }
 
   @override
   Widget build(BuildContext context) {

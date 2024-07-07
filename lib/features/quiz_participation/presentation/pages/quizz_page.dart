@@ -81,7 +81,9 @@ class _QuizzPageState extends State<QuizzPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(quiz.title),
-        leading: const AppBarBackButton(),
+        leading: const AppBarBackButton(
+          iconData: Icons.close,
+        ),
       ),
 
       // Validate and next button

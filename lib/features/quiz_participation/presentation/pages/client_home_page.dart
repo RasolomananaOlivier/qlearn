@@ -17,6 +17,7 @@ class ClientHomePage extends StatelessWidget {
       body: const Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 16,
+          vertical: 8,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
