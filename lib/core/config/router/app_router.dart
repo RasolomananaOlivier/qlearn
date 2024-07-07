@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:q_learn/features/auth/presentation/pages/LoginPage.dart';
-import 'package:q_learn/features/auth/presentation/pages/RegisterPage.dart';
+import 'package:q_learn/features/auth/presentation/pages/login_page.dart';
+import 'package:q_learn/features/auth/presentation/pages/register_page.dart';
 import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
 import 'package:q_learn/features/news/presentation/pages/details_page.dart';
 import 'package:q_learn/features/news/presentation/pages/profile_page.dart';
 import 'package:q_learn/features/news/presentation/pages/root_page.dart';
 import 'package:q_learn/features/news/presentation/pages/news_page.dart';
+import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -77,7 +77,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
           },
           children: [
             CustomRoute(
-              page: NewsRoute.page,
+              page: ClientHomeRoute.page,
               customRouteBuilder: (context, child, page) {
                 return CupertinoPageRoute(
                   settings: page,

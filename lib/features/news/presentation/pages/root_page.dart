@@ -4,7 +4,7 @@ import 'package:q_learn/core/config/router/app_router.dart';
 
 @RoutePage()
 class RootPage extends StatefulWidget {
-  const RootPage({Key? key}) : super(key: key);
+  const RootPage({super.key});
 
   @override
   _RootPageState createState() => _RootPageState();
@@ -14,17 +14,17 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: [
-        const NewsRoute(),
-        const ProfileRoute(),
+      routes: const [
+        ClientHomeRoute(),
+        ProfileRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
           items: const [
-            BottomNavigationBarItem(label: 'News', icon: Icon(Icons.newspaper)),
-            BottomNavigationBarItem(label: 'Profile', icon: Icon(Icons.person)),
+            BottomNavigationBarItem(label: 'Quiz', icon: Icon(Icons.home)),
+            BottomNavigationBarItem(label: 'Compte', icon: Icon(Icons.person)),
           ],
         );
       },
