@@ -8,6 +8,8 @@ import 'package:q_learn/features/news/presentation/pages/profile_page.dart';
 import 'package:q_learn/features/news/presentation/pages/root_page.dart';
 import 'package:q_learn/features/news/presentation/pages/news_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
+import 'package:q_learn/features/quiz_participation/presentation/pages/quiz_list_page.dart';
+import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -20,6 +22,8 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
     final isAuthenticated = ref.watch(authProvider).isAuthenticated;
+
+    print(resolver.route.name);
 
     if (isAuthenticated ||
         resolver.route.name == LoginRoute.name ||
@@ -67,8 +71,6 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         CustomRoute(
           page: RootRoute.page,
           initial: true,
-
-          // guards: [AuthGuard()],
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,
@@ -76,6 +78,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
             );
           },
           children: [
+            // Client home route
             CustomRoute(
               page: ClientHomeRoute.page,
               customRouteBuilder: (context, child, page) {
@@ -85,6 +88,8 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
                 );
               },
             ),
+
+            // Profile page
             CustomRoute(
               page: ProfileRoute.page,
               customRouteBuilder: (context, child, page) {
@@ -96,6 +101,27 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
             ),
           ],
         ),
+
+        CustomRoute(
+          page: QuizListRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        CustomRoute(
+          page: QuizzRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
         CustomRoute(
           page: DetailsRoute.page,
           // guards: [AuthGuard()],

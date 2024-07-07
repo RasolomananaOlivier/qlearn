@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:q_learn/core/common/app_bar_back_button.dart';
 import 'package:q_learn/features/auth/presentation/widgets/register_form.dart';
 
 @RoutePage()
@@ -16,13 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Créer un compte"),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_sharp),
-          tooltip: 'Retour',
-          onPressed: () {
-            context.router.maybePop();
-          },
-        ),
+        leading: const AppBarBackButton(),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

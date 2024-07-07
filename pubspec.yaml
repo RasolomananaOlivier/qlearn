@@ -23,6 +23,7 @@ dependencies:
   oktoast: ^3.4.0
   flutter_form_builder: ^9.3.0
   form_builder_validators: ^10.0.1
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:

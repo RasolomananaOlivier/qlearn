@@ -45,6 +45,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfilePage(),
       );
     },
+    QuizListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const QuizListPage(),
+      );
+    },
+    QuizzRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const QuizzPage(),
+      );
+    },
     RegisterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -126,6 +138,34 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [QuizListPage]
+class QuizListRoute extends PageRouteInfo<void> {
+  const QuizListRoute({List<PageRouteInfo>? children})
+      : super(
+          QuizListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuizListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [QuizzPage]
+class QuizzRoute extends PageRouteInfo<void> {
+  const QuizzRoute({List<PageRouteInfo>? children})
+      : super(
+          QuizzRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuizzRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
