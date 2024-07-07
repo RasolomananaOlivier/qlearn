@@ -19,19 +19,5 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return App();
-    // return MultiProvider(
-    //   providers: [
-    //     // ChangeNotifierProvider<NewsProvider>(
-    //     //   create: (_) => NewsProvider(
-    //     //     GetNewsUsecase(
-    //     //       NewsRepositoryImpl(
-    //     //         remoteDataSource: NewsRemoteDataSourceImpl(dio: Dio()),
-    //     //       ),
-    //     //     ),
-    //     //   ),
-    //     // ),
-    //   ],
-    //   child: App(),
-    // );
   }
 }

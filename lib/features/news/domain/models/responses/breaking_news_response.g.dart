@@ -10,7 +10,7 @@ BreakingNewsResponse _$BreakingNewsResponseFromJson(
         Map<String, dynamic> json) =>
     BreakingNewsResponse(
       status: json['status'] as String,
-      totalResults: json['totalResults'] as int,
+      totalResults: (json['totalResults'] as num).toInt(),
       articles: (json['articles'] as List<dynamic>)
           .map((e) => Article.fromJson(e as Map<String, dynamic>))
           .toList(),

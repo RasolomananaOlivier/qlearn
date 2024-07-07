@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "q_learn",
+            "name": "dev env",
             "request": "launch",
             "type": "dart"
         },

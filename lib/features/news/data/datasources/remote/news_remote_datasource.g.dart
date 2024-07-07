@@ -6,7 +6,7 @@ part of 'news_remote_datasource.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
 class _NewsRemoteDatasource implements NewsRemoteDatasource {
   _NewsRemoteDatasource(
@@ -28,7 +28,7 @@ class _NewsRemoteDatasource implements NewsRemoteDatasource {
     int? page,
     String? apiKey,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'country': country,
       r'category': category,
@@ -38,7 +38,7 @@ class _NewsRemoteDatasource implements NewsRemoteDatasource {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{r'x-api-key': apiKey};
     _headers.removeWhere((k, v) => v == null);
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<BreakingNewsResponse>>(Options(
       method: 'GET',
@@ -56,8 +56,8 @@ class _NewsRemoteDatasource implements NewsRemoteDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = BreakingNewsResponse.fromJson(_result.data!);
-    final httpResponse = HttpResponse(value, _result);
+    final _value = BreakingNewsResponse.fromJson(_result.data!);
+    final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
