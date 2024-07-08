@@ -4,7 +4,7 @@ import 'package:q_learn/features/auth/presentation/pages/login_page.dart';
 import 'package:q_learn/features/auth/presentation/pages/register_page.dart';
 import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
 import 'package:q_learn/features/news/presentation/pages/details_page.dart';
-import 'package:q_learn/features/news/presentation/pages/profile_page.dart';
+import 'package:q_learn/features/auth/presentation/pages/profile_page.dart';
 import 'package:q_learn/features/news/presentation/pages/root_page.dart';
 import 'package:q_learn/features/news/presentation/pages/news_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
