@@ -18,11 +18,6 @@ class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Votre résultat"),
-        centerTitle: true,
-        leading: const SizedBox(),
-      ),
       // Validate and next button
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(left: 30),
@@ -40,36 +35,42 @@ class _ResultPageState extends State<ResultPage> {
           ),
         ),
       ),
-      body: buildBody(),
+      body: SafeArea(child: buildBody()),
     );
   }
 
   Widget buildBody() {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Correct answers
-          Text("Réponses correctes"),
-          Text(
-            "2/3",
+          const Text(
+            "Votre Score",
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 30,
-              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Text(
+            "75%",
+            style: TextStyle(
+              fontSize: 60,
+              fontWeight: FontWeight.bold,
+              color: Colors.blueAccent.shade400,
             ),
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           // Incorrect answers
-          Text("Réponses erronées"),
-          Text(
-            "1/3",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w500,
+          const SizedBox(
+            width: 210,
+            child: Text(
+              "Bien joué ! Vous avez repondu correctement à 15/20 questions.",
+              textAlign: TextAlign.center,
             ),
-          )
+          ),
         ],
       ),
     );
