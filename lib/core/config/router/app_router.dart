@@ -8,7 +8,6 @@ import 'package:q_learn/features/auth/presentation/pages/profile_page.dart';
 import 'package:q_learn/features/news/presentation/pages/root_page.dart';
 import 'package:q_learn/features/news/presentation/pages/news_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
-import 'package:q_learn/features/quiz_participation/presentation/pages/quiz_list_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/result_page.dart';
 

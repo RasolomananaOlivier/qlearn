@@ -45,12 +45,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfilePage(),
       );
     },
-    QuizListRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const QuizListPage(),
-      );
-    },
     QuizzRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,

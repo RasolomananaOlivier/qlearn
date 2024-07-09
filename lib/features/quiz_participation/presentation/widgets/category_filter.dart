@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DifficultyFilter extends StatefulWidget {
-  const DifficultyFilter({super.key});
-
-  @override
-  _DifficultyFilterState createState() => _DifficultyFilterState();
-}
-
-class _DifficultyFilterState extends State<DifficultyFilter> {
+class CategoryFilter extends StatelessWidget {
+  const CategoryFilter({super.key});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +10,7 @@ class _DifficultyFilterState extends State<DifficultyFilter> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            "Difficulté",
+            "Catégories",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
@@ -30,10 +24,10 @@ class _DifficultyFilterState extends State<DifficultyFilter> {
   }
 
   Widget buildFilters() {
-    List<Widget> filters = [1, 2, 3, 4, 5]
-        .map((index) => ChoiceChip(
-              label: Text("$index étoile"),
-              selected: index == 1,
+    List<Widget> filters = ["JavaScript", "Dart", "PHP", "Java", "C++"]
+        .map((category) => FilterChip(
+              label: Text(category),
+              selected: category == "JavaScript",
               elevation: 0,
               shape: const StadiumBorder(),
               onSelected: (value) {},
