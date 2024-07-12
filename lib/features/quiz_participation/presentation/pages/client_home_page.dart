@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/core/utils/resources/data_state.dart';
-import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/quizzes_provider.dart';
 import 'package:q_learn/features/quiz_participation/presentation/widgets/filter_drawer_content.dart';
 import 'package:q_learn/features/quiz_participation/presentation/widgets/quiz_list.dart';
@@ -60,7 +58,7 @@ class _ClientHomePageState extends ConsumerState<ClientHomePage> {
       );
     }
 
-    List<Quiz>? quizzes = response.value?.data?.quizzes;
+    final quizzes = response.value?.data?.quizzes;
     if (quizzes == null) {
       return const SizedBox();
     }

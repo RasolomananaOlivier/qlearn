@@ -19,4 +19,9 @@ class Question {
       _$QuestionFromJson(json);
 
   Map<String, dynamic> toJson() => _$QuestionToJson(this);
+
+  @override
+  String toString() {
+    return 'Question{id: $id, content: $content, answers: $answers}';
+  }
 }

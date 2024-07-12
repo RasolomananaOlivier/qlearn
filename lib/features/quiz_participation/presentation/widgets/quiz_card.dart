@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/core/config/router/app_router.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/features/quiz_participation/presentation/providers/quizz_test_provider.dart';
 
-class QuizCard extends StatelessWidget {
+class QuizCard extends ConsumerWidget {
   const QuizCard({
     super.key,
     required this.quiz,
@@ -12,12 +14,20 @@ class QuizCard extends StatelessWidget {
 
   final Quiz quiz;
 
-  void handleTap(BuildContext context) {
-    context.router.push(const QuizzRoute());
+  void handleTap(BuildContext context, WidgetRef ref) {
+    if (quiz.questions.isEmpty) return;
+
+    ref.read(quizzTestProvider.notifier).init(
+          quiz.questions,
+        );
+
+    context.router.push(QuizzRoute(
+      quizz: quiz,
+    ));
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       color: Colors.blueGrey.shade50,
       elevation: 0,
@@ -64,7 +74,7 @@ class QuizCard extends StatelessWidget {
             const SizedBox(height: 10),
 
             ElevatedButton(
-              onPressed: () => handleTap(context),
+              onPressed: () => handleTap(context, ref),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent.shade400,
               ),

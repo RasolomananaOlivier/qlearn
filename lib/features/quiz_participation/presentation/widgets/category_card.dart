@@ -6,7 +6,7 @@ class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key});
 
   void handleTap(BuildContext context) {
-    context.router.push(const QuizListRoute());
+    // context.router.push(const QuizListRoute());
   }
 
   @override

@@ -19,4 +19,9 @@ class Answer {
   factory Answer.fromJson(Map<String, dynamic> json) => _$AnswerFromJson(json);
 
   Map<String, dynamic> toJson() => _$AnswerToJson(this);
+
+  @override
+  String toString() {
+    return 'Answer{id: $id, content: $content, isCorrect: $isCorrect}';
+  }
 }

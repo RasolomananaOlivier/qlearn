@@ -27,29 +27,29 @@ class QuizRepositoryImpl extends BaseRepository implements QuizRepository {
               Answer(id: 1, content: "var", isCorrect: true),
               Answer(id: 2, content: "let", isCorrect: false),
               Answer(id: 3, content: "const", isCorrect: false),
-              Answer(id: 1, content: "variable", isCorrect: false),
+              Answer(id: 4, content: "variable", isCorrect: false),
             ],
           ),
           Question(
-            id: 1,
+            id: 2,
             content:
                 "Quelle méthode est utilisée pour ajouter un élément à la fin d'un tableau??",
             answers: [
               Answer(id: 1, content: "push()", isCorrect: true),
               Answer(id: 2, content: "pop()", isCorrect: false),
               Answer(id: 3, content: "shift()", isCorrect: false),
-              Answer(id: 1, content: "unshift()", isCorrect: false),
+              Answer(id: 4, content: "unshift()", isCorrect: false),
             ],
           ),
           Question(
-            id: 1,
+            id: 3,
             content:
                 "Comment peut-on écrire un commentaire sur une seule ligne en JavaScript?",
             answers: [
               Answer(id: 1, content: "<!-- comment -->", isCorrect: false),
               Answer(id: 2, content: "// comment", isCorrect: true),
               Answer(id: 3, content: "/* comment */", isCorrect: false),
-              Answer(id: 1, content: "' comment", isCorrect: false),
+              Answer(id: 4, content: "' comment", isCorrect: false),
             ],
           )
         ],

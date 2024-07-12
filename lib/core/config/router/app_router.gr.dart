@@ -46,9 +46,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     QuizzRoute.name: (routeData) {
+      final args = routeData.argsAs<QuizzRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const QuizzPage(),
+        child: QuizzPage(
+          key: args.key,
+          quizz: args.quizz,
+        ),
       );
     },
     RegisterRoute.name: (routeData) {
@@ -143,31 +147,40 @@ class ProfileRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [QuizListPage]
-class QuizListRoute extends PageRouteInfo<void> {
-  const QuizListRoute({List<PageRouteInfo>? children})
-      : super(
-          QuizListRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'QuizListRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [QuizzPage]
-class QuizzRoute extends PageRouteInfo<void> {
-  const QuizzRoute({List<PageRouteInfo>? children})
-      : super(
+class QuizzRoute extends PageRouteInfo<QuizzRouteArgs> {
+  QuizzRoute({
+    Key? key,
+    required Quiz quizz,
+    List<PageRouteInfo>? children,
+  }) : super(
           QuizzRoute.name,
+          args: QuizzRouteArgs(
+            key: key,
+            quizz: quizz,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'QuizzRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<QuizzRouteArgs> page = PageInfo<QuizzRouteArgs>(name);
+}
+
+class QuizzRouteArgs {
+  const QuizzRouteArgs({
+    this.key,
+    required this.quizz,
+  });
+
+  final Key? key;
+
+  final Quiz quizz;
+
+  @override
+  String toString() {
+    return 'QuizzRouteArgs{key: $key, quizz: $quizz}';
+  }
 }
 
 /// generated route for

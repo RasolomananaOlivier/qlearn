@@ -35,8 +35,12 @@ class QuizzStep extends StatelessWidget {
   }
 
   Widget buildOptions() {
-    List<Widget> quizzOptions =
-        question.answers.map((answer) => QuizzOption(answer: answer)).toList();
+    List<Widget> quizzOptions = question.answers
+        .map((answer) => QuizzOption(
+              question: question,
+              answer: answer,
+            ))
+        .toList();
 
     return Wrap(
       direction: Axis.horizontal,

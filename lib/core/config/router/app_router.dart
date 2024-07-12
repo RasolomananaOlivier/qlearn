@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/features/auth/presentation/pages/login_page.dart';
 import 'package:q_learn/features/auth/presentation/pages/register_page.dart';
@@ -7,6 +8,7 @@ import 'package:q_learn/features/news/presentation/pages/details_page.dart';
 import 'package:q_learn/features/auth/presentation/pages/profile_page.dart';
 import 'package:q_learn/features/news/presentation/pages/root_page.dart';
 import 'package:q_learn/features/news/presentation/pages/news_page.dart';
+import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/result_page.dart';
@@ -98,16 +100,6 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
               },
             ),
           ],
-        ),
-
-        CustomRoute(
-          page: QuizListRoute.page,
-          customRouteBuilder: (context, child, page) {
-            return CupertinoPageRoute(
-              settings: page,
-              builder: (context) => child,
-            );
-          },
         ),
 
         CustomRoute(
