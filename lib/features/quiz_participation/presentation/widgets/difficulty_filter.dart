@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:q_learn/features/quiz_participation/presentation/providers/difficulty_provider.dart';
 
-class DifficultyFilter extends StatefulWidget {
+class DifficultyFilter extends ConsumerStatefulWidget {
   const DifficultyFilter({super.key});
 
   @override
   _DifficultyFilterState createState() => _DifficultyFilterState();
 }
 
-class _DifficultyFilterState extends State<DifficultyFilter> {
+class _DifficultyFilterState extends ConsumerState<DifficultyFilter> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,13 +32,24 @@ class _DifficultyFilterState extends State<DifficultyFilter> {
   }
 
   Widget buildFilters() {
+    final difficulty = ref.watch(difficultyProvider);
+
     List<Widget> filters = [1, 2, 3, 4, 5]
         .map((index) => ChoiceChip(
               label: Text("$index étoile"),
-              selected: index == 1,
+              selected: index == difficulty,
               elevation: 0,
               shape: const StadiumBorder(),
-              onSelected: (value) {},
+              showCheckmark: false,
+              onSelected: (value) {
+                final notifier = ref.read(difficultyProvider.notifier);
+
+                if (value) {
+                  notifier.setDifficulty(index);
+                } else {
+                  notifier.setDifficulty(0);
+                }
+              },
             ))
         .toList();
 

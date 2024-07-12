@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:q_learn/features/quiz_management/domain/models/quiz_category.dart';
+import 'package:q_learn/features/quiz_participation/presentation/providers/categories_provider.dart';
 
-class CategoryFilter extends StatelessWidget {
+class CategoryFilter extends ConsumerStatefulWidget {
   const CategoryFilter({super.key});
+
+  @override
+  ConsumerState<CategoryFilter> createState() => _CategoryFilterState();
+}
+
+class _CategoryFilterState extends ConsumerState<CategoryFilter> {
+  final categories = [
+    QuizCategory(id: 1, name: "JavaScript"),
+    QuizCategory(id: 2, name: "Dart"),
+    QuizCategory(id: 3, name: "PHP"),
+    QuizCategory(id: 4, name: "Java"),
+    QuizCategory(id: 5, name: "C++"),
+    QuizCategory(id: 6, name: "Python"),
+    QuizCategory(id: 7, name: "Ruby"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,13 +43,20 @@ class CategoryFilter extends StatelessWidget {
   }
 
   Widget buildFilters() {
-    List<Widget> filters = ["JavaScript", "Dart", "PHP", "Java", "C++"]
+    final filterCategories = ref.watch(filterCategoriesProvider);
+
+    List<Widget> filters = categories
         .map((category) => FilterChip(
-              label: Text(category),
-              selected: category == "JavaScript",
+              label: Text(category.name),
+              selected: filterCategories.contains(category.id),
               elevation: 0,
+              showCheckmark: false,
               shape: const StadiumBorder(),
-              onSelected: (value) {},
+              onSelected: (selected) {
+                ref
+                    .read(filterCategoriesProvider.notifier)
+                    .toggleCategory(category.id);
+              },
             ))
         .toList();
 
