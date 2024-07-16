@@ -11,7 +11,7 @@ part 'auth_datasource.g.dart';
 abstract class AuthDatasource {
   factory AuthDatasource(Dio dio, {String baseUrl}) = _AuthDatasource;
 
-  @POST('/auth/login')
+  @POST('/auth/signin')
   Future<HttpResponse<LoginResponse>> login(@Body() LoginRequest body);
 
   @POST('/auth/register')

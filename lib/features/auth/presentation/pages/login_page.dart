@@ -16,67 +16,70 @@ class LoginPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const Text(
-              "Q-learn",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const Text(
+                "Q-learn",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 30),
-            const LoginForm(),
+              const SizedBox(height: 30),
+              const LoginForm(),
 
-            // Go to register page
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () => goToRegister(context),
-              child: SizedBox(
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0, bottom: 25),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        children: <InlineSpan>[
-                          const TextSpan(
-                            text: 'Pas de compte ? ',
-                            style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              // fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          WidgetSpan(
-                            child: Text(
-                              "S'inscrire",
+              // Go to register page
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => goToRegister(context),
+                child: SizedBox(
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 25),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(
+                              text: 'Pas de compte ? ',
                               style: TextStyle(
-                                color: Theme.of(context).colorScheme.secondary,
                                 fontFamily: 'Montserrat',
-                                fontSize: 16,
+                                // fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                decoration: TextDecoration.underline,
                               ),
                             ),
+                            WidgetSpan(
+                              child: Text(
+                                "S'inscrire",
+                                style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Montserrat',
+                            // fontSize: 16,
+                            fontWeight: FontWeight.w600,
                           ),
-                        ],
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Montserrat',
-                          // fontSize: 16,
-                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

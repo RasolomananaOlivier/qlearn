@@ -117,6 +117,9 @@ class _RegisterFormState extends ConsumerState<RegisterForm> {
             name: 'email',
             keyboardType: TextInputType.emailAddress,
             autofillHints: const [AutofillHints.email],
+            onChanged: (value) {
+              ref.read(registerFormErrorProvider.notifier).setEmailError(null);
+            },
             decoration: InputDecoration(
               hintText: 'Entrer votre email',
               // isDense: true,

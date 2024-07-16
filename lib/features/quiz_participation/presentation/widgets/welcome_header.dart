@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
 
-class WelcomeHeader extends StatelessWidget {
+class WelcomeHeader extends ConsumerWidget {
   const WelcomeHeader({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -16,9 +18,9 @@ class WelcomeHeader extends StatelessWidget {
             color: Colors.blueAccent.shade700,
           ),
         ),
-        const Text(
-          "@Rasolomanana Olivier",
-          style: TextStyle(
+        Text(
+          "${ref.watch(authProvider).user?.fullName}",
+          style: const TextStyle(
             color: Colors.black87,
             fontSize: 16,
           ),

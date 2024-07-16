@@ -35,7 +35,7 @@ class _AuthDatasource implements AuthDatasource {
     )
             .compose(
               _dio.options,
-              '/auth/login',
+              '/auth/signin',
               queryParameters: queryParameters,
               data: _data,
             )
