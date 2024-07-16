@@ -9,24 +9,33 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'register_provider.g.dart';
 
 @riverpod
-Future<void> register(RegisterRef ref, RegisterRequest request) async {
-  final repository = locator.get<AuthRepository>();
+class Register extends _$Register {
+  @override
+  Future<void> build() async {}
 
-  final dataState = await repository.register(request: request);
+  Future<void> register(RegisterRequest request) async {
+    final repository = locator.get<AuthRepository>();
 
-  if (dataState is DataSuccess) {
-    ref.read(authProvider.notifier).setAuth(
-          AuthState(
-            user: dataState.data?.user,
-            token: dataState.data?.accessToken,
-          ),
-        );
-  } else {
-    final response = dataState.error?.response;
-    if (response != null) {
-      ref.read(registerFormErrorProvider.notifier).setEmailError(
-            response.data['data']['email'],
+    state = const AsyncValue.loading();
+
+    final dataState = await repository.register(request: request);
+
+    if (dataState is DataSuccess) {
+      ref.read(authProvider.notifier).setAuth(
+            AuthState(
+              user: dataState.data?.user,
+              token: dataState.data?.accessToken,
+            ),
           );
+    } else {
+      final response = dataState.error?.response;
+      if (response != null) {
+        ref.read(registerFormErrorProvider.notifier).setEmailError(
+              response.data['data']['email'],
+            );
+      }
     }
+
+    state = const AsyncValue<void>.data(null);
   }
 }

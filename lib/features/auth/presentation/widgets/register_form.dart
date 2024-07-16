@@ -29,11 +29,11 @@ class _RegisterFormState extends ConsumerState<RegisterForm> {
   }
 
   void handleSubmit() async {
-    _formKey.currentState!.saveAndValidate();
+    if (_formKey.currentState!.saveAndValidate()) {
+      final request = RegisterRequest.fromJson(_formKey.currentState!.value);
 
-    final request = RegisterRequest.fromJson(_formKey.currentState!.value);
-
-    await ref.read(registerProvider(request).future);
+      await ref.read(registerProvider.notifier).register(request);
+    }
   }
 
   @override
@@ -166,22 +166,28 @@ class _RegisterFormState extends ConsumerState<RegisterForm> {
           const SizedBox(height: 20),
 
           // Submit button
-          ElevatedButton(
-            onPressed: handleSubmit,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueAccent.shade400,
-              minimumSize: const Size.fromHeight(44),
-            ),
-            child: Text(
-              "S'inscrire",
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-          ),
+          buildSubmitButton(),
         ],
+      ),
+    );
+  }
+
+  Widget buildSubmitButton() {
+    final registering = ref.watch(registerProvider);
+
+    return ElevatedButton(
+      onPressed: registering.isLoading ? null : handleSubmit,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blueAccent.shade400,
+        minimumSize: const Size.fromHeight(44),
+      ),
+      child: Text(
+        "S'inscrire",
+        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
       ),
     );
   }
