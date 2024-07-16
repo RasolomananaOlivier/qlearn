@@ -100,7 +100,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
           ElevatedButton(
             onPressed: handleLogin,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue.shade900,
+              backgroundColor: Colors.blueAccent.shade400,
               minimumSize: const Size.fromHeight(44),
             ),
             child: Text(

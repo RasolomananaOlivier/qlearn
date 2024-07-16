@@ -15,4 +15,9 @@ class Token {
   factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
 
   Map<String, dynamic> toJson() => _$TokenToJson(this);
+
+  @override
+  String toString() {
+    return "token: $token, expiresAt $expiresAt";
+  }
 }

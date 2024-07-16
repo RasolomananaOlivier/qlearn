@@ -23,9 +23,9 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final isAuthenticated = ref.watch(authProvider).isAuthenticated;
+    final authNotifier = ref.watch(authProvider.notifier);
 
-    if (isAuthenticated ||
+    if (authNotifier.isAuthenticated() ||
         resolver.route.name == LoginRoute.name ||
         resolver.route.name == RegisterRoute.name) {
       // we continue navigation

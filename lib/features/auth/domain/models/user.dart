@@ -12,7 +12,7 @@ class User {
   final DateTime createdAt;
   final DateTime updatedAt;
   final String role;
-  final DateTime deletedAt;
+  final DateTime? deletedAt;
 
   User({
     required this.id,
@@ -23,10 +23,15 @@ class User {
     required this.createdAt,
     required this.updatedAt,
     required this.role,
-    required this.deletedAt,
+    this.deletedAt,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  @override
+  String toString() {
+    return "firstName: $firstName, lastName: $lastName, email: $email";
+  }
 }

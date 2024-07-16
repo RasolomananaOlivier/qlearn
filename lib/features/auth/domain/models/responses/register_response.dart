@@ -15,4 +15,9 @@ class RegisterResponse {
       _$RegisterResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$RegisterResponseToJson(this);
+
+  @override
+  String toString() {
+    return "user: $user, token $accessToken";
+  }
 }

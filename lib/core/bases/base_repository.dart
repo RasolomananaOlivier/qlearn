@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:q_learn/core/utils/resources/data_state.dart';
@@ -13,14 +11,7 @@ abstract class BaseRepository {
     try {
       final httpResponse = await request();
 
-      if (httpResponse.response.statusCode == HttpStatus.ok) {
-        return DataSuccess(data: httpResponse.data);
-      } else {
-        throw DioException(
-          requestOptions: httpResponse.response.requestOptions,
-          response: httpResponse.response,
-        );
-      }
+      return DataSuccess(data: httpResponse.data);
     } on DioException catch (e) {
       return DataFailed(error: e);
     }
