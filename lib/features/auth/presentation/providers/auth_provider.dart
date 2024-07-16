@@ -1,22 +1,29 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:q_learn/features/auth/domain/models/token.dart';
+import 'package:q_learn/features/auth/domain/models/user.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class AuthNotifier extends ChangeNotifier {
-  bool _isAuthenticated = false;
+part 'auth_provider.g.dart';
 
-  bool get isAuthenticated => _isAuthenticated;
+class AuthState {
+  final User? user;
+  final Token? token;
 
-  void login() {
-    _isAuthenticated = true;
-    notifyListeners();
-  }
-
-  void logout() {
-    _isAuthenticated = false;
-    notifyListeners();
-  }
+  AuthState({this.user, this.token});
 }
 
-final authProvider = ChangeNotifierProvider<AuthNotifier>((ref) {
-  return AuthNotifier();
-});
+@Riverpod(keepAlive: true)
+class Auth extends _$Auth {
+  @override
+  AuthState build() {
+    return AuthState();
+  }
+
+  void setAuth(AuthState authState) async {
+    state = authState;
+  }
+
+  bool isAuthenticated() {
+    return state.user != null;
+  }
+}

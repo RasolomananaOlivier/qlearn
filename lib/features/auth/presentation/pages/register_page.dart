@@ -19,63 +19,65 @@ class _RegisterPageState extends State<RegisterPage> {
         title: const Text("Créer un compte"),
         leading: const AppBarBackButton(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
-            const RegisterForm(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const SizedBox(height: 40),
+              const RegisterForm(),
 
-            // Go to register page
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () => context.router.maybePop(),
-              child: SizedBox(
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0, bottom: 25),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        children: <InlineSpan>[
-                          const TextSpan(
-                            text: 'Vous avez déjà un compte ? ',
-                            style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w600,
+              // Go to register page
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => context.router.maybePop(),
+                child: SizedBox(
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 25),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(
+                              text: 'Vous avez déjà un compte ? ',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                          WidgetSpan(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 5),
-                              child: Text(
-                                "Se connecter",
-                                style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  decoration: TextDecoration.underline,
+                            WidgetSpan(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Text(
+                                  "Se connecter",
+                                  style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    decoration: TextDecoration.underline,
+                                  ),
                                 ),
                               ),
                             ),
+                          ],
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Montserrat',
+                            // fontSize: 16,
+                            fontWeight: FontWeight.w600,
                           ),
-                        ],
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Montserrat',
-                          // fontSize: 16,
-                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

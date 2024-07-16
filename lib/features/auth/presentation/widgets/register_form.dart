@@ -1,16 +1,23 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:q_learn/core/config/router/app_router.dart';
 import 'package:q_learn/core/utils/constants/input_decoration_property.dart';
+import 'package:q_learn/features/auth/domain/models/requests/register_request.dart';
+import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
+import 'package:q_learn/features/auth/presentation/providers/register/register_form_error_provider.dart';
+import 'package:q_learn/features/auth/presentation/providers/register/register_provider.dart';
 
-class RegisterForm extends StatefulWidget {
+class RegisterForm extends ConsumerStatefulWidget {
   const RegisterForm({super.key});
 
   @override
   _RegisterFormState createState() => _RegisterFormState();
 }
 
-class _RegisterFormState extends State<RegisterForm> {
+class _RegisterFormState extends ConsumerState<RegisterForm> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   bool _hidePassword = true;
@@ -21,8 +28,24 @@ class _RegisterFormState extends State<RegisterForm> {
     });
   }
 
+  void handleSubmit() async {
+    if (_formKey.currentState!.saveAndValidate()) {
+      final request = RegisterRequest.fromJson(_formKey.currentState!.value);
+
+      await ref.read(registerProvider.notifier).register(request);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final authNotifier = ref.watch(authProvider.notifier);
+
+    if (authNotifier.isAuthenticated()) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.replaceRoute(const ClientHomeRoute());
+      });
+    }
+
     return FormBuilder(
       key: _formKey,
       child: Column(
@@ -94,12 +117,16 @@ class _RegisterFormState extends State<RegisterForm> {
             name: 'email',
             keyboardType: TextInputType.emailAddress,
             autofillHints: const [AutofillHints.email],
+            onChanged: (value) {
+              ref.read(registerFormErrorProvider.notifier).setEmailError(null);
+            },
             decoration: InputDecoration(
               hintText: 'Entrer votre email',
               // isDense: true,
               hintStyle: InputDecorationProperty.hintStyle(),
               border: InputDecorationProperty.border(context),
               enabledBorder: InputDecorationProperty.enabledBorder(),
+              errorText: ref.watch(registerFormErrorProvider).email,
             ),
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
@@ -142,22 +169,28 @@ class _RegisterFormState extends State<RegisterForm> {
           const SizedBox(height: 20),
 
           // Submit button
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue.shade900,
-              minimumSize: const Size.fromHeight(44),
-            ),
-            child: Text(
-              'Se connecter',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-          ),
+          buildSubmitButton(),
         ],
+      ),
+    );
+  }
+
+  Widget buildSubmitButton() {
+    final registering = ref.watch(registerProvider);
+
+    return ElevatedButton(
+      onPressed: registering.isLoading ? null : handleSubmit,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blueAccent.shade400,
+        minimumSize: const Size.fromHeight(44),
+      ),
+      child: Text(
+        "S'inscrire",
+        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
       ),
     );
   }
