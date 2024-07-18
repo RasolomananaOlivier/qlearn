@@ -4,9 +4,6 @@ import 'package:get_it/get_it.dart';
 import 'package:q_learn/features/auth/data/datasources/remote/auth_datasource.dart';
 import 'package:q_learn/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:q_learn/features/auth/domain/repositories/auth_repository.dart';
-import 'package:q_learn/features/news/data/datasources/remote/news_remote_datasource.dart';
-import 'package:q_learn/features/news/data/repositories/news_repository_impl.dart';
-import 'package:q_learn/features/news/domain/repositories/news_repository.dart';
 import 'package:q_learn/features/quiz_participation/data/repositories/quiz_repository_impl.dart';
 import 'package:q_learn/features/quiz_participation/domain/repositories/quiz_repository.dart';
 

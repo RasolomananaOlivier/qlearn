@@ -21,22 +21,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ClientHomePage(),
       );
     },
-    DetailsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const DetailsPage(),
-      );
-    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const LoginPage(),
-      );
-    },
-    NewsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const NewsPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -91,20 +79,6 @@ class ClientHomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [DetailsPage]
-class DetailsRoute extends PageRouteInfo<void> {
-  const DetailsRoute({List<PageRouteInfo>? children})
-      : super(
-          DetailsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'DetailsRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})
@@ -114,20 +88,6 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [NewsPage]
-class NewsRoute extends PageRouteInfo<void> {
-  const NewsRoute({List<PageRouteInfo>? children})
-      : super(
-          NewsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'NewsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

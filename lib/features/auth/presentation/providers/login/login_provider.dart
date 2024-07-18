@@ -20,6 +20,8 @@ class Login extends _$Login {
 
     final dataState = await repository.login(request: request);
 
+    state = const AsyncValue.data(null);
+
     if (dataState is DataSuccess) {
       final token = dataState.data?.accessToken;
       final user = dataState.data?.user;
@@ -54,7 +56,5 @@ class Login extends _$Login {
         }
       }
     }
-
-    state = const AsyncValue<void>.data(null);
   }
 }

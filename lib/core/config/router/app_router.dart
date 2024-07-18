@@ -4,10 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/features/auth/presentation/pages/login_page.dart';
 import 'package:q_learn/features/auth/presentation/pages/register_page.dart';
 import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
-import 'package:q_learn/features/news/presentation/pages/details_page.dart';
 import 'package:q_learn/features/auth/presentation/pages/profile_page.dart';
-import 'package:q_learn/features/news/presentation/pages/root_page.dart';
-import 'package:q_learn/features/news/presentation/pages/news_page.dart';
+import 'package:q_learn/core/common/root_page.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
@@ -22,10 +20,12 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
   AppRouter(this.ref);
 
   @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final authNotifier = ref.watch(authProvider.notifier);
+  void onNavigation(NavigationResolver resolver, StackRouter router) async {
+    final authState = await ref.watch(authProvider.future);
 
-    if (authNotifier.isAuthenticated() ||
+    debugPrint(resolver.route.name);
+
+    if (authState.user != null ||
         resolver.route.name == LoginRoute.name ||
         resolver.route.name == RegisterRoute.name) {
       // we continue navigation
@@ -121,16 +121,5 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
             );
           },
         ),
-
-        CustomRoute(
-          page: DetailsRoute.page,
-          // guards: [AuthGuard()],
-          customRouteBuilder: (context, child, page) {
-            return CupertinoPageRoute(
-              settings: page,
-              builder: (context) => child,
-            );
-          },
-        )
       ];
 }
