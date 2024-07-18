@@ -20,7 +20,7 @@ Map<String, dynamic> _$FormErrorToJson(FormError instance) => <String, dynamic>{
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginFormErrorHash() => r'ecef5830f264634e23b6b18680a091471615e3f8';
+String _$loginFormErrorHash() => r'351c704d27f62da74aa5a11c74bf92e00cf1d5b4';
 
 /// See also [LoginFormError].
 @ProviderFor(LoginFormError)

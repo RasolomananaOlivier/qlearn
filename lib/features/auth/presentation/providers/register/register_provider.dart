@@ -21,12 +21,21 @@ class Register extends _$Register {
     final dataState = await repository.register(request: request);
 
     if (dataState is DataSuccess) {
+      final token = dataState.data?.accessToken;
+      final user = dataState.data?.user;
+
       ref.read(authProvider.notifier).setAuth(
             AuthState(
-              user: dataState.data?.user,
-              token: dataState.data?.accessToken,
+              user: user,
+              token: token,
             ),
           );
+
+      // save user locally
+      if (token != null && user != null) {
+        await repository.saveToken(token);
+        await repository.saveUser(user);
+      }
     } else {
       final response = dataState.error?.response;
       if (response != null) {

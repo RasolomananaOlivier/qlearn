@@ -7,6 +7,10 @@ class Token {
   final String token;
   final DateTime expiresAt;
 
+  // For shared preferences key
+  static const String tokenKey = 'token';
+  static const String expiresAtKey = 'expiresAt';
+
   Token({
     required this.token,
     required this.expiresAt,

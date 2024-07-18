@@ -14,6 +14,16 @@ class User {
   final String role;
   final DateTime? deletedAt;
 
+  // For shared preferences key
+  static const String idKey = 'userId';
+  static const String firstNameKey = 'userFirstName';
+  static const String lastNameKey = 'userLastName';
+  static const String fullNameKey = 'userFullName';
+  static const String emailKey = 'userEmail';
+  static const String createdAtKey = 'userCreatedAt';
+  static const String updatedAtKey = 'userUpdatedAt';
+  static const String roleKey = 'userRole';
+
   User({
     required this.id,
     required this.firstName,
