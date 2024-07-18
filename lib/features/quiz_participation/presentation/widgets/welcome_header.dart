@@ -7,6 +7,8 @@ class WelcomeHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,7 +21,7 @@ class WelcomeHeader extends ConsumerWidget {
           ),
         ),
         Text(
-          "${ref.watch(authProvider).user?.fullName}",
+          authState.isLoading ? "..." : "${authState.value?.user?.fullName}",
           style: const TextStyle(
             color: Colors.black87,
             fontSize: 16,
