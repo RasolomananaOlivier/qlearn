@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:q_learn/features/auth/data/datasources/remote/auth_datasource.dart';
 import 'package:q_learn/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:q_learn/features/auth/domain/repositories/auth_repository.dart';
+import 'package:q_learn/features/quiz_participation/data/datasources/remote/quiz_datasource.dart';
 import 'package:q_learn/features/quiz_participation/data/repositories/quiz_repository_impl.dart';
 import 'package:q_learn/features/quiz_participation/domain/repositories/quiz_repository.dart';
 
@@ -20,6 +21,9 @@ Future<void> initializeDependencies() async {
   locator.registerSingleton<AuthDatasource>(
     AuthDatasource(locator<Dio>()),
   );
+  locator.registerLazySingleton<QuizDatasource>(
+    () => QuizDatasource(locator.get<Dio>()),
+  );
 
   // Registering repositories
   locator.registerSingleton<AuthRepository>(
@@ -27,6 +31,6 @@ Future<void> initializeDependencies() async {
   );
 
   locator.registerLazySingleton<QuizRepository>(
-    () => QuizRepositoryImpl(),
+    () => QuizRepositoryImpl(locator.get<QuizDatasource>()),
   );
 }

@@ -53,7 +53,7 @@ class _QuizzPageState extends ConsumerState<QuizzPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.quizz.title),
+        title: Text(widget.quizz.name),
         leading: const AppBarBackButton(
           iconData: Icons.close,
         ),

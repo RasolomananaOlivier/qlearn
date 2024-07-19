@@ -42,7 +42,7 @@ class QuizCard extends ConsumerWidget {
               children: [
                 Expanded(
                   child: Text(
-                    quiz.title,
+                    quiz.name,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -56,7 +56,7 @@ class QuizCard extends ConsumerWidget {
             // Difficulty Rating
             RatingBar.builder(
               itemCount: 5,
-              initialRating: 2,
+              initialRating: quiz.difficulty,
               ignoreGestures: true,
               itemSize: 18,
               itemBuilder: (context, index) {

@@ -49,7 +49,9 @@ class _ClientHomePageState extends ConsumerState<ClientHomePage> {
     final response = ref.watch(quizzesProvider);
 
     if (response.isLoading) {
-      return const CircularProgressIndicator();
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
     }
 
     if (response.value != null && response.value is DataFailed) {

@@ -6,15 +6,17 @@ part 'quiz.g.dart';
 @JsonSerializable()
 class Quiz {
   final int id;
-  final String title;
+  final String name;
   final String description;
+  final double difficulty;
   final List<Question> questions;
 
   Quiz({
     required this.id,
-    required this.title,
+    required this.name,
     required this.description,
     this.questions = const [],
+    this.difficulty = 1,
   });
 
   factory Quiz.fromJson(Map<String, dynamic> json) => _$QuizFromJson(json);
