@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:q_learn/core/utils/constants/strings.dart';
+import 'package:q_learn/features/quiz_participation/domain/models/requests/submit_quizz_request.dart';
+import 'package:q_learn/features/quiz_participation/domain/models/responses/submit_quizz_response.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:q_learn/features/quiz_participation/domain/models/responses/quizzes_response.dart';
 
@@ -11,4 +13,10 @@ abstract class QuizDatasource {
 
   @GET('/quizzes')
   Future<HttpResponse<QuizzesResponse>> getQuizzes();
+
+  @POST('/sessions')
+  Future<HttpResponse<SubmitQuizzResponse>> submitQuizz(
+    @Header('Authorization') String authorization,
+    @Body() SubmitQuizzRequest body,
+  );
 }

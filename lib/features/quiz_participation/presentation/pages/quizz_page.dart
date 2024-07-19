@@ -35,9 +35,9 @@ class _QuizzPageState extends ConsumerState<QuizzPage> {
         );
       });
     } else {
-      // TODO: submit result to the back
-
-      context.router.replace(const ResultRoute());
+      context.router.replace(ResultRoute(
+        quizz: widget.quizz,
+      ));
     }
   }
 

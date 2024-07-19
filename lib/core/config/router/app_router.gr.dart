@@ -50,9 +50,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ResultRoute.name: (routeData) {
+      final args = routeData.argsAs<ResultRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ResultPage(),
+        child: ResultPage(
+          key: args.key,
+          quizz: args.quizz,
+        ),
       );
     },
     RootRoute.name: (routeData) {
@@ -159,16 +163,39 @@ class RegisterRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ResultPage]
-class ResultRoute extends PageRouteInfo<void> {
-  const ResultRoute({List<PageRouteInfo>? children})
-      : super(
+class ResultRoute extends PageRouteInfo<ResultRouteArgs> {
+  ResultRoute({
+    Key? key,
+    required Quiz quizz,
+    List<PageRouteInfo>? children,
+  }) : super(
           ResultRoute.name,
+          args: ResultRouteArgs(
+            key: key,
+            quizz: quizz,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ResultRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ResultRouteArgs> page = PageInfo<ResultRouteArgs>(name);
+}
+
+class ResultRouteArgs {
+  const ResultRouteArgs({
+    this.key,
+    required this.quizz,
+  });
+
+  final Key? key;
+
+  final Quiz quizz;
+
+  @override
+  String toString() {
+    return 'ResultRouteArgs{key: $key, quizz: $quizz}';
+  }
 }
 
 /// generated route for

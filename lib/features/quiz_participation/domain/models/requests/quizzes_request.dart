@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 
 part 'quizzes_request.g.dart';
 

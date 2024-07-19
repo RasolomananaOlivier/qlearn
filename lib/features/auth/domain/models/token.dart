@@ -24,4 +24,8 @@ class Token {
   String toString() {
     return "token: $token, expiresAt $expiresAt";
   }
+
+  String getAuthorization() {
+    return "Bearer $token";
+  }
 }
