@@ -9,11 +9,11 @@ part of 'answer.dart';
 Answer _$AnswerFromJson(Map<String, dynamic> json) => Answer(
       id: (json['id'] as num).toInt(),
       content: json['content'] as String,
-      isCorrect: json['is_correct'] as bool,
+      isCorrect: json['isCorrect'] as bool,
     );
 
 Map<String, dynamic> _$AnswerToJson(Answer instance) => <String, dynamic>{
       'id': instance.id,
       'content': instance.content,
-      'is_correct': instance.isCorrect,
+      'isCorrect': instance.isCorrect,
     };

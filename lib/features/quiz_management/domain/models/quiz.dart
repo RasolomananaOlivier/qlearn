@@ -9,7 +9,7 @@ class Quiz {
   final String name;
   final String description;
   final double difficulty;
-  final List<Question> questions;
+  List<Question> questions;
 
   Quiz({
     required this.id,
@@ -18,6 +18,10 @@ class Quiz {
     this.questions = const [],
     this.difficulty = 1,
   });
+
+  void setQuestions(List<Question> questions) {
+    this.questions = questions;
+  }
 
   factory Quiz.fromJson(Map<String, dynamic> json) => _$QuizFromJson(json);
 

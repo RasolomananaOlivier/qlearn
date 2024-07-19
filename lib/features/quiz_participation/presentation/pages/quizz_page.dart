@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/core/common/app_bar_back_button.dart';
 import 'package:q_learn/core/config/router/app_router.dart';
-import 'package:q_learn/features/answer_management/domain/models/answer.dart';
-import 'package:q_learn/features/question_management/domain/models/question.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/quizz_test_provider.dart';
 import 'package:q_learn/features/quiz_participation/presentation/widgets/quizz_stepper.dart';
@@ -47,6 +45,7 @@ class _QuizzPageState extends ConsumerState<QuizzPage> {
     final questions = ref.watch(quizzTestProvider);
 
     return questions[step - 1].answers.isNotEmpty;
+    // return true;
   }
 
   @override
@@ -78,29 +77,33 @@ class _QuizzPageState extends ConsumerState<QuizzPage> {
       ),
 
       // Quizz page body
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          // Indicates the progress of the quizz
-          LinearProgressIndicator(
-            value: step / widget.quizz.questions.length,
-          ),
-          const SizedBox(height: 5),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              "$step/${widget.quizz.questions.length}",
-              textAlign: TextAlign.end,
-            ),
-          ),
+      body: buildBody(),
+    );
+  }
 
-          // Quizz Stepper
-          QuizzStepper(
-            questions: widget.quizz.questions,
-            controller: controller,
+  Widget buildBody() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        // Indicates the progress of the quizz
+        LinearProgressIndicator(
+          value: step / widget.quizz.questions.length,
+        ),
+        const SizedBox(height: 5),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            "$step/${widget.quizz.questions.length}",
+            textAlign: TextAlign.end,
           ),
-        ],
-      ),
+        ),
+
+        // Quizz Stepper
+        QuizzStepper(
+          questions: widget.quizz.questions,
+          controller: controller,
+        ),
+      ],
     );
   }
 }
