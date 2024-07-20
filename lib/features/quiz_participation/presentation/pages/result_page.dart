@@ -62,6 +62,7 @@ class _ResultPageState extends ConsumerState<ResultPage> {
       return const Center(child: Text("Ooops! Une erreur s'est produite"));
     }
 
+    final session = response?.data?.session;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +77,7 @@ class _ResultPageState extends ConsumerState<ResultPage> {
           ),
           Text(
             // "75%",
-            "${response?.data?.session.getPercentage()}",
+            session?.getPercentage() ?? "",
             style: TextStyle(
               fontSize: 60,
               fontWeight: FontWeight.bold,
@@ -88,9 +89,9 @@ class _ResultPageState extends ConsumerState<ResultPage> {
 
           // Incorrect answers
           SizedBox(
-            width: 210,
+            width: 250,
             child: Text(
-              "Bien joué ! Vous avez repondu correctement à ${response?.data?.session.score}/10 questions.",
+              session?.getResultMessage() ?? "",
               textAlign: TextAlign.center,
             ),
           ),

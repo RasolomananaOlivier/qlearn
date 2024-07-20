@@ -26,4 +26,12 @@ class Session {
   String getPercentage() {
     return "${score / 10 * 100}%";
   }
+
+  String getResultMessage() {
+    if (score >= 5) {
+      return "Bien joué ! Vous avez repondu correctement à $score/10 questions.";
+    } else {
+      return "Oops! Vous n'avez repondu correctement qu'à $score/10 questions. La prochaine fois sera peut-être la bonne.";
+    }
+  }
 }
