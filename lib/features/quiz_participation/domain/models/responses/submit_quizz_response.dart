@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:q_learn/core/common/models/session.dart';
+import 'package:q_learn/core/common/domain/models/session.dart';
 
 part 'submit_quizz_response.g.dart';
 

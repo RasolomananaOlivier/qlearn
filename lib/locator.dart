@@ -1,6 +1,9 @@
 import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:q_learn/core/common/data/datasources/remote/quizz_category_datasource.dart';
+import 'package:q_learn/core/common/data/repositories/quizz_category_repository_impl.dart';
+import 'package:q_learn/core/common/domain/repositories/quizz_category_repository.dart';
 import 'package:q_learn/features/auth/data/datasources/remote/auth_datasource.dart';
 import 'package:q_learn/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:q_learn/features/auth/domain/repositories/auth_repository.dart';
@@ -30,6 +33,9 @@ Future<void> initializeDependencies() async {
   locator.registerLazySingleton<QuestionDatasource>(
     () => QuestionDatasource(locator.get<Dio>()),
   );
+  locator.registerLazySingleton<QuizzCategoryDatasource>(
+    () => QuizzCategoryDatasource(locator.get<Dio>()),
+  );
 
   // Registering repositories
   locator.registerSingleton<AuthRepository>(
@@ -40,5 +46,8 @@ Future<void> initializeDependencies() async {
   );
   locator.registerLazySingleton<QuestionRepository>(
     () => QuestionRepositoryImpl(locator.get<QuestionDatasource>()),
+  );
+  locator.registerLazySingleton<QuizzCategoryRepository>(
+    () => QuizzCategoryRepositoryImpl(locator.get<QuizzCategoryDatasource>()),
   );
 }

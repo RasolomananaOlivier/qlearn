@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:q_learn/core/common/app_bar_back_button.dart';
+import 'package:q_learn/core/common/widgets/app_bar_back_button.dart';
 import 'package:q_learn/core/config/router/app_router.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/quizz_test_provider.dart';

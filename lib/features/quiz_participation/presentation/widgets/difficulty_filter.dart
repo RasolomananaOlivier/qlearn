@@ -41,7 +41,7 @@ class _DifficultyFilterState extends ConsumerState<DifficultyFilter> {
   Widget buildFilters() {
     List<Widget> filters = [1, 2, 3, 4, 5]
         .map((index) => ChoiceChip(
-              label: Text("$index étoile"),
+              label: Text(getDifficultyLabel(index)),
               selected: index == widget.difficulty,
               elevation: 0,
               shape: const StadiumBorder(),
@@ -60,5 +60,22 @@ class _DifficultyFilterState extends ConsumerState<DifficultyFilter> {
       spacing: 10,
       children: filters,
     );
+  }
+
+  String getDifficultyLabel(int value) {
+    switch (value) {
+      case 1:
+        return 'Novice';
+      case 2:
+        return 'Débutant';
+      case 3:
+        return 'Intermédiaire';
+      case 4:
+        return 'Expert';
+      case 5:
+        return 'Legende';
+      default:
+        return 'Novice';
+    }
   }
 }
