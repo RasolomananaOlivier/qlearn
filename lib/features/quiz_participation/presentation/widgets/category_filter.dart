@@ -4,7 +4,14 @@ import 'package:q_learn/features/quiz_management/domain/models/quiz_category.dar
 import 'package:q_learn/features/quiz_participation/presentation/providers/categories_provider.dart';
 
 class CategoryFilter extends ConsumerStatefulWidget {
-  const CategoryFilter({super.key});
+  CategoryFilter({
+    super.key,
+    required this.categories,
+    required this.toggleCategory,
+  });
+
+  final List<int> categories;
+  void Function(int category) toggleCategory;
 
   @override
   ConsumerState<CategoryFilter> createState() => _CategoryFilterState();
@@ -43,19 +50,15 @@ class _CategoryFilterState extends ConsumerState<CategoryFilter> {
   }
 
   Widget buildFilters() {
-    final filterCategories = ref.watch(filterCategoriesProvider);
-
     List<Widget> filters = categories
         .map((category) => FilterChip(
               label: Text(category.name),
-              selected: filterCategories.contains(category.id),
+              selected: widget.categories.contains(category.id),
               elevation: 0,
               showCheckmark: false,
               shape: const StadiumBorder(),
               onSelected: (selected) {
-                ref
-                    .read(filterCategoriesProvider.notifier)
-                    .toggleCategory(category.id);
+                widget.toggleCategory(category.id);
               },
             ))
         .toList();

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/categories_provider.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/difficulty_provider.dart';
+import 'package:q_learn/features/quiz_participation/presentation/providers/quizzes_provider.dart';
 import 'package:q_learn/features/quiz_participation/presentation/widgets/category_filter.dart';
 import 'package:q_learn/features/quiz_participation/presentation/widgets/difficulty_filter.dart';
 
-class FilterDrawerContent extends ConsumerWidget {
+class FilterDrawerContent extends ConsumerStatefulWidget {
   const FilterDrawerContent({
     super.key,
     required this.parentScaffoldKey,
@@ -13,15 +14,57 @@ class FilterDrawerContent extends ConsumerWidget {
 
   final GlobalKey<ScaffoldState> parentScaffoldKey;
 
-  void applyFilter() {}
+  @override
+  ConsumerState<FilterDrawerContent> createState() =>
+      _FilterDrawerContentState();
+}
+
+class _FilterDrawerContentState extends ConsumerState<FilterDrawerContent> {
+  late int localDifficulty;
+  late List<int> localCategories;
+
+  void closeDrawer() {
+    widget.parentScaffoldKey.currentState!.closeEndDrawer();
+  }
+
+  void applyFilter() {
+    ref.read(difficultyProvider.notifier).setDifficulty(localDifficulty);
+    ref.read(filterCategoriesProvider.notifier).setCategories(localCategories);
+    ref.read(quizzesProvider.notifier).invalidate();
+
+    closeDrawer();
+  }
+
+  void setDifficulty(int difficulty) {
+    setState(() {
+      localDifficulty = difficulty;
+    });
+  }
+
+  void toggleCategory(int category) {
+    setState(() {
+      if (localCategories.contains(category)) {
+        localCategories = localCategories.where((c) => c != category).toList();
+      } else {
+        localCategories = [...localCategories, category];
+      }
+    });
+  }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final difficultyFilter = ref.watch(difficultyProvider);
-    final categorieFilter = ref.watch(filterCategoriesProvider);
+  void initState() {
+    super.initState();
 
-    int filterCount = categorieFilter.length;
-    if (difficultyFilter != 0) {
+    localDifficulty = ref.read(difficultyProvider);
+    localCategories = ref.read(filterCategoriesProvider);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    int filterCount = 0;
+    filterCount = localCategories.length;
+
+    if (localDifficulty != 0) {
       filterCount++;
     }
 
@@ -39,9 +82,7 @@ class FilterDrawerContent extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
-              onPressed: () {
-                parentScaffoldKey.currentState!.closeEndDrawer();
-              },
+              onPressed: closeDrawer,
               icon: const Icon(Icons.close),
             ),
           )
@@ -66,18 +107,24 @@ class FilterDrawerContent extends ConsumerWidget {
         ),
       ),
 
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Filter by difficulty
-              DifficultyFilter(),
-              SizedBox(height: 10),
+              DifficultyFilter(
+                difficulty: localDifficulty,
+                setDifficulty: setDifficulty,
+              ),
+              const SizedBox(height: 10),
 
               // Filter by categories
-              CategoryFilter(),
+              CategoryFilter(
+                categories: localCategories,
+                toggleCategory: toggleCategory,
+              ),
             ],
           ),
         ),

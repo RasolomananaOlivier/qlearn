@@ -12,7 +12,9 @@ abstract class QuizDatasource {
   factory QuizDatasource(Dio dio, {String baseUrl}) = _QuizDatasource;
 
   @GET('/quizzes')
-  Future<HttpResponse<QuizzesResponse>> getQuizzes();
+  Future<HttpResponse<QuizzesResponse>> getQuizzes(
+    @Query('difficulty[eq]') int? difficulty,
+  );
 
   @POST('/sessions')
   Future<HttpResponse<SubmitQuizzResponse>> submitQuizz(

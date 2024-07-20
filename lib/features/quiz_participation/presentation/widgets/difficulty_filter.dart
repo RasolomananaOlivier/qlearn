@@ -3,7 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/difficulty_provider.dart';
 
 class DifficultyFilter extends ConsumerStatefulWidget {
-  const DifficultyFilter({super.key});
+  DifficultyFilter({
+    super.key,
+    required this.difficulty,
+    required this.setDifficulty,
+  });
+
+  final int? difficulty;
+  void Function(int category) setDifficulty;
 
   @override
   _DifficultyFilterState createState() => _DifficultyFilterState();
@@ -32,22 +39,18 @@ class _DifficultyFilterState extends ConsumerState<DifficultyFilter> {
   }
 
   Widget buildFilters() {
-    final difficulty = ref.watch(difficultyProvider);
-
     List<Widget> filters = [1, 2, 3, 4, 5]
         .map((index) => ChoiceChip(
               label: Text("$index étoile"),
-              selected: index == difficulty,
+              selected: index == widget.difficulty,
               elevation: 0,
               shape: const StadiumBorder(),
               showCheckmark: false,
               onSelected: (value) {
-                final notifier = ref.read(difficultyProvider.notifier);
-
                 if (value) {
-                  notifier.setDifficulty(index);
+                  widget.setDifficulty(index);
                 } else {
-                  notifier.setDifficulty(0);
+                  widget.setDifficulty(0);
                 }
               },
             ))
