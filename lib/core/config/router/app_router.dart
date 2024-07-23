@@ -10,6 +10,9 @@ import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/result_page.dart';
+import 'package:q_learn/features/admin/presentation/pages/admin_dashboard_page.dart';
+import 'package:q_learn/features/admin/presentation/pages/creation_question_page.dart';
+import 'package:q_learn/features/admin/presentation/pages/creation_quizz_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -27,7 +30,9 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
 
     if (authState.user != null ||
         resolver.route.name == LoginRoute.name ||
-        resolver.route.name == RegisterRoute.name) {
+        resolver.route.name == RegisterRoute.name ||
+        resolver.route.name == CreationQuestionRoute.name ||
+        resolver.route.name == CreationQuizzRoute.name) {
       // we continue navigation
       resolver.next();
     } else {
@@ -70,7 +75,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         // routes go here
         CustomRoute(
           page: RootRoute.page,
-          initial: true,
+          // initial: true,
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,
@@ -111,6 +116,42 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
             );
           },
         ),
+        /* ___________________________ ADMIN ________________________________  */
+
+        // Creation Question Page in Admin
+        CustomRoute(
+          page: CreationQuestionRoute.page,
+          initial: true,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        CustomRoute(
+          page: CreationQuizzRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        // Admin Dashboard route
+        CustomRoute(
+          page: AdminDashboardRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+/** ________________________________________________________________________ */
 
         CustomRoute(
           page: ResultRoute.page,

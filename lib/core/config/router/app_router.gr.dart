@@ -15,10 +15,28 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AdminDashboardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminDashboardPage(),
+      );
+    },
     ClientHomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ClientHomePage(),
+      );
+    },
+    CreationQuestionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreationQuestionPage(),
+      );
+    },
+    CreationQuizzRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreationQuizzPage(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -65,6 +83,20 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [AdminDashboardPage]
+class AdminDashboardRoute extends PageRouteInfo<void> {
+  const AdminDashboardRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminDashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminDashboardRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ClientHomePage]
 class ClientHomeRoute extends PageRouteInfo<void> {
   const ClientHomeRoute({List<PageRouteInfo>? children})
@@ -74,6 +106,34 @@ class ClientHomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ClientHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreationQuestionPage]
+class CreationQuestionRoute extends PageRouteInfo<void> {
+  const CreationQuestionRoute({List<PageRouteInfo>? children})
+      : super(
+          CreationQuestionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreationQuestionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreationQuizzPage]
+class CreationQuizzRoute extends PageRouteInfo<void> {
+  const CreationQuizzRoute({List<PageRouteInfo>? children})
+      : super(
+          CreationQuizzRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreationQuizzRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
