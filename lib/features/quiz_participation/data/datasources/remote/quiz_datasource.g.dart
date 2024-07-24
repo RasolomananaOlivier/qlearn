@@ -21,10 +21,11 @@ class _QuizDatasource implements QuizDatasource {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<QuizzesResponse>> getQuizzes(int? difficulty) async {
+  Future<HttpResponse<QuizzesResponse>> getQuizzes(
+      Map<String, dynamic> queries) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'difficulty[eq]': difficulty};
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(

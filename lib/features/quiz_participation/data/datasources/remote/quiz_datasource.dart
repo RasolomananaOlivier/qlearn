@@ -13,7 +13,7 @@ abstract class QuizDatasource {
 
   @GET('/quizzes')
   Future<HttpResponse<QuizzesResponse>> getQuizzes(
-    @Query('difficulty[eq]') int? difficulty,
+    @Queries() Map<String, dynamic> queries,
   );
 
   @POST('/sessions')

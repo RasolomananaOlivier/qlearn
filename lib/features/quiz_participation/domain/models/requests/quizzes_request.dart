@@ -4,11 +4,11 @@ part 'quizzes_request.g.dart';
 
 @JsonSerializable()
 class QuizzesRequest {
-  final int? categoryId;
+  final List<int>? categoryIds;
   final int? difficulty;
 
   QuizzesRequest({
-    this.categoryId,
+    this.categoryIds,
     this.difficulty,
   });
 
@@ -16,4 +16,22 @@ class QuizzesRequest {
       _$QuizzesRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$QuizzesRequestToJson(this);
+
+  Map<String, dynamic> toQueries() {
+    Map<String, dynamic> queries = {};
+
+    if (difficulty != null) {
+      queries['difficulty[eq]'] = difficulty;
+    }
+
+    if (categoryIds != null && categoryIds!.isNotEmpty) {
+      if (categoryIds!.length == 1) {
+        queries['categoryId[eq]'] = categoryIds!.first;
+      } else {
+        queries['categoryId[in]'] = categoryIds;
+      }
+    }
+
+    return queries;
+  }
 }
