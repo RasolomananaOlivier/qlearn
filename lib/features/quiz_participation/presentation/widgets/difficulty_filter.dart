@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:q_learn/features/quiz_participation/presentation/providers/difficulty_provider.dart';
 
 class DifficultyFilter extends ConsumerStatefulWidget {
   DifficultyFilter({
