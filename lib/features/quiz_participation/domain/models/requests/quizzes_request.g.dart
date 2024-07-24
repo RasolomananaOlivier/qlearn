@@ -12,10 +12,12 @@ QuizzesRequest _$QuizzesRequestFromJson(Map<String, dynamic> json) =>
           ?.map((e) => (e as num).toInt())
           .toList(),
       difficulty: (json['difficulty'] as num?)?.toInt(),
+      keyword: json['keyword'] as String?,
     );
 
 Map<String, dynamic> _$QuizzesRequestToJson(QuizzesRequest instance) =>
     <String, dynamic>{
       'categoryIds': instance.categoryIds,
       'difficulty': instance.difficulty,
+      'keyword': instance.keyword,
     };

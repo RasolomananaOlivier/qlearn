@@ -6,10 +6,12 @@ part 'quizzes_request.g.dart';
 class QuizzesRequest {
   final List<int>? categoryIds;
   final int? difficulty;
+  final String? keyword;
 
   QuizzesRequest({
     this.categoryIds,
     this.difficulty,
+    this.keyword,
   });
 
   factory QuizzesRequest.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +32,11 @@ class QuizzesRequest {
       } else {
         queries['categoryId[in]'] = categoryIds;
       }
+    }
+
+    if (keyword != null) {
+      queries['name[contains]'] = keyword;
+      queries['description[contains]'] = keyword;
     }
 
     return queries;
