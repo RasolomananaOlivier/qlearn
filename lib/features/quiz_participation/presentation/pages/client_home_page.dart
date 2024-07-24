@@ -49,7 +49,9 @@ class _ClientHomePageState extends ConsumerState<ClientHomePage> {
     final response = ref.watch(quizzesProvider);
 
     if (response.isLoading) {
-      return const CircularProgressIndicator();
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
     }
 
     if (response.value != null && response.value is DataFailed) {
@@ -72,9 +74,9 @@ class _ClientHomePageState extends ConsumerState<ClientHomePage> {
         ),
 
         // Quiz category count found
-        const Padding(
-          padding: EdgeInsets.only(left: 15),
-          child: Text("10k+ quizz trouvées"),
+        Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Text("${quizzes.length} quizz trouvées"),
         ),
         const SizedBox(height: 20),
         // const DifficultyFilter(),

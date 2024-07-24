@@ -9,10 +9,12 @@ class QuizzOption extends ConsumerWidget {
     super.key,
     required this.question,
     required this.answer,
+    required this.index,
   });
 
   final Question question;
   final Answer answer;
+  final int index;
 
   void handleSelected(WidgetRef ref, bool selected) {
     ref.read(quizzTestProvider.notifier).giveAnswer(
@@ -31,13 +33,25 @@ class QuizzOption extends ConsumerWidget {
         );
 
     return ChoiceChip(
-      label: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.30,
-        child: Text(
-          answer.content,
-          textAlign: TextAlign.center,
+      label: Container(
+        width: MediaQuery.of(context).size.width * 0.8,
+        padding: const EdgeInsets.symmetric(vertical: 7),
+        child: Expanded(
+          child: Text(
+            "$index. ${answer.content}",
+            overflow: TextOverflow.visible,
+            // textAlign: TextAlign.center,
+            softWrap: true,
+          ),
         ),
       ),
+      selectedColor: Colors.blueAccent.shade400,
+      shape: StadiumBorder(
+        side: BorderSide(
+          color: Colors.blueAccent.shade400,
+        ),
+      ),
+      backgroundColor: Colors.white.withOpacity(0.8),
       showCheckmark: false,
       selected: isSelected,
       onSelected: (selected) => handleSelected(ref, selected),

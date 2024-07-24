@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/core/config/router/app_router.dart';
+import 'package:q_learn/core/utils/resources/data_state.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/features/quiz_participation/domain/repositories/question_repository.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/quizz_test_provider.dart';
+import 'package:q_learn/locator.dart';
 
-class QuizCard extends ConsumerWidget {
+class QuizCard extends ConsumerStatefulWidget {
   const QuizCard({
     super.key,
     required this.quiz,
@@ -14,20 +17,46 @@ class QuizCard extends ConsumerWidget {
 
   final Quiz quiz;
 
-  void handleTap(BuildContext context, WidgetRef ref) {
-    if (quiz.questions.isEmpty) return;
+  @override
+  ConsumerState<QuizCard> createState() => _QuizCardState();
+}
+
+class _QuizCardState extends ConsumerState<QuizCard> {
+  bool isLoading = false;
+
+  void handleTap(BuildContext context) async {
+    final questionRepository = locator.get<QuestionRepository>();
+
+    setState(() {
+      isLoading = true;
+    });
+
+    final response = await questionRepository.getQuestions(
+      quizId: widget.quiz.id,
+    );
+
+    setState(() {
+      isLoading = false;
+    });
+
+    if (response is DataFailed) {
+      return;
+    }
+
+    widget.quiz.setQuestions(response.data!.questions);
 
     ref.read(quizzTestProvider.notifier).init(
-          quiz.questions,
+          widget.quiz.questions,
         );
 
+    // ignore: use_build_context_synchronously
     context.router.push(QuizzRoute(
-      quizz: quiz,
+      quizz: widget.quiz,
     ));
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Card(
       color: Colors.blueGrey.shade50,
       elevation: 0,
@@ -42,7 +71,7 @@ class QuizCard extends ConsumerWidget {
               children: [
                 Expanded(
                   child: Text(
-                    quiz.title,
+                    widget.quiz.name,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -56,7 +85,7 @@ class QuizCard extends ConsumerWidget {
             // Difficulty Rating
             RatingBar.builder(
               itemCount: 5,
-              initialRating: 2,
+              initialRating: widget.quiz.difficulty,
               ignoreGestures: true,
               itemSize: 18,
               itemBuilder: (context, index) {
@@ -70,17 +99,17 @@ class QuizCard extends ConsumerWidget {
             const SizedBox(height: 10),
 
             // Quizzes count
-            Text(quiz.description),
+            Text(widget.quiz.description),
             const SizedBox(height: 10),
 
             ElevatedButton(
-              onPressed: () => handleTap(context, ref),
+              onPressed: isLoading ? null : () => handleTap(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent.shade400,
               ),
-              child: const Text(
-                "Passer le test",
-                style: TextStyle(
+              child: Text(
+                isLoading ? "Patientez..." : "Passer le test",
+                style: const TextStyle(
                   color: Colors.white,
                   // decoration: TextDecoration.underline,
                 ),

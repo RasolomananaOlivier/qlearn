@@ -9,15 +9,7 @@ class FilterCategories extends _$FilterCategories {
     return [];
   }
 
-  void toggleCategory(int category) {
-    if (state.contains(category)) {
-      state = state.where((c) => c != category).toList();
-    } else {
-      state = [...state, category];
-    }
-  }
-
-  bool isSelected(int category) {
-    return state.contains(category);
+  void setCategories(List<int> categories) {
+    state = categories;
   }
 }

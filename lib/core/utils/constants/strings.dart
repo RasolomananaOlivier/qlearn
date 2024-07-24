@@ -1,6 +1,5 @@
 // Networking and APIs
-const String baseUrl = 'https://newsapi.org/v2';
-const defaultApiKey = '62cd4066a0a94b99bb516c5c929505112';
+const String baseUrl = 'http://10.0.2.2:3000/api/';
 
 // Storage and database
 const String articlesTableName = 'articles_table';

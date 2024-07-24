@@ -17,6 +17,12 @@ class QuizList extends StatefulWidget {
 class _QuizListState extends State<QuizList> {
   @override
   Widget build(BuildContext context) {
+    if (widget.quizzes.isEmpty) {
+      return const Center(
+        child: Text("Oops! Aucun quizz n'a été trouvé."),
+      );
+    }
+
     return ListView.builder(
       itemCount: widget.quizzes.length,
       itemBuilder: (context, index) {

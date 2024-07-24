@@ -6,7 +6,7 @@ part of 'difficulty_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$difficultyHash() => r'5a851de139b502edcacb2138b2b169df6c59a886';
+String _$difficultyHash() => r'90974c98c991baac8aff2c139a9a3392aad2fe93';
 
 /// See also [Difficulty].
 @ProviderFor(Difficulty)

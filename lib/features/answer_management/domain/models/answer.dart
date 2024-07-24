@@ -6,8 +6,6 @@ part 'answer.g.dart';
 class Answer {
   final int id;
   final String content;
-
-  @JsonKey(name: 'is_correct')
   final bool isCorrect;
 
   Answer({

@@ -41,4 +41,15 @@ class QuizzTest extends _$QuizzTest {
 
     return q.answers.contains(answer);
   }
+
+  List<Map<String, int>> getResult() {
+    return state
+        .map(
+          (question) => ({
+            'questionId': question.id,
+            'selectedAnswerId': question.answers.first.id
+          }),
+        )
+        .toList();
+  }
 }
