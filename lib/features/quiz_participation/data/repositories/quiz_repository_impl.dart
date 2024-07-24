@@ -21,7 +21,7 @@ class QuizRepositoryImpl extends BaseRepository implements QuizRepository {
   }) {
     return getStateOf(
       request: () => _datasource.getQuizzes(
-        request.difficulty,
+        request.toQueries(),
       ),
     );
   }
