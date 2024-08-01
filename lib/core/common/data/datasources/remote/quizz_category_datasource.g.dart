@@ -13,7 +13,7 @@ class _QuizzCategoryDatasource implements QuizzCategoryDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://10.0.2.2:3000/api/';
+    baseUrl ??= 'http://localhost:3000/api/';
   }
 
   final Dio _dio;

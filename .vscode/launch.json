@@ -8,6 +8,7 @@
             "name": "DEV (real device)",
             "request": "launch",
             "type": "dart",
+            "program": "lib/main.dart",
             "args": [
                 "--dart-define=BASE_URL=http://localhost:3000/api/",
             ]
@@ -16,8 +17,9 @@
             "name": "DEV (emulator)",
             "request": "launch",
             "type": "dart",
+            "program": "lib/main.dart",
             "args": [
-                "--dart-define=BASE_URL=http://http://10.0.2.2:3000/api/"
+                "--dart-define=BASE_URL=http://10.0.2.2:3000/api/"
             ]
         },
     ]
