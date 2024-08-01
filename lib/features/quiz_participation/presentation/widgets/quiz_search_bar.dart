@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:q_learn/core/utils/constants/input_decoration_property.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:q_learn/features/quiz_participation/presentation/providers/quizzes_provider.dart';
+import 'package:q_learn/features/quiz_participation/presentation/providers/search_keyword_provider.dart';
 
-class QuizSearchBar extends StatefulWidget {
+class QuizSearchBar extends ConsumerStatefulWidget {
   const QuizSearchBar({
     super.key,
     required this.parentScaffoldKey,
@@ -10,10 +12,28 @@ class QuizSearchBar extends StatefulWidget {
   final GlobalKey<ScaffoldState> parentScaffoldKey;
 
   @override
-  _QuizSearchBarState createState() => _QuizSearchBarState();
+  QuizSearchBarState createState() => QuizSearchBarState();
 }
 
-class _QuizSearchBarState extends State<QuizSearchBar> {
+class QuizSearchBarState extends ConsumerState<QuizSearchBar> {
+  final controller = TextEditingController();
+
+  void handleSubmit(String keyword) {
+    ref
+        .read(searchKeywordProvider.notifier)
+        .setKeyword(keyword.isEmpty ? null : keyword);
+
+    ref.read(quizzesProvider.notifier).invalidate();
+  }
+
+  void handleClear() {
+    controller.clear();
+
+    ref.read(searchKeywordProvider.notifier).setKeyword(null);
+
+    ref.read(quizzesProvider.notifier).invalidate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,8 +42,8 @@ class _QuizSearchBarState extends State<QuizSearchBar> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextField(
-              onTap: () => {},
-              onChanged: (value) => {},
+              controller: controller,
+              onSubmitted: handleSubmit,
               cursorColor: const Color.fromRGBO(0, 0, 0, 0.6),
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.only(left: 25.0),
@@ -44,11 +64,25 @@ class _QuizSearchBarState extends State<QuizSearchBar> {
                 fillColor: Colors.black12.withAlpha(20),
                 filled: true,
                 suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.search,
-                    color: Color.fromRGBO(0, 0, 0, 0.6),
-                  ),
+                  onPressed: () {
+                    if (ref.read(searchKeywordProvider) == null) {
+                      final text = controller.text;
+                      if (text.isEmpty) return;
+
+                      handleSubmit(controller.text);
+                    } else {
+                      handleClear();
+                    }
+                  },
+                  icon: ref.watch(searchKeywordProvider) == null
+                      ? const Icon(
+                          Icons.search,
+                          color: Color.fromRGBO(0, 0, 0, 0.6),
+                        )
+                      : const Icon(
+                          Icons.close,
+                          color: Color.fromRGBO(0, 0, 0, 0.6),
+                        ),
                 ),
               ),
             ),

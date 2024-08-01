@@ -6,7 +6,7 @@ part of 'quizz_test_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$quizzTestHash() => r'eeb368bb7e747d5cb878845a29a4e9b89551a6bc';
+String _$quizzTestHash() => r'd9dc68069ccbb82bc8b40e58adb97878410d2677';
 
 /// See also [QuizzTest].
 @ProviderFor(QuizzTest)

@@ -6,14 +6,10 @@ part 'difficulty_provider.g.dart';
 class Difficulty extends _$Difficulty {
   @override
   int build() {
-    return 1;
+    return 0;
   }
 
   void setDifficulty(int difficulty) {
     state = difficulty;
-  }
-
-  bool isSelected(int difficulty) {
-    return state == difficulty;
   }
 }

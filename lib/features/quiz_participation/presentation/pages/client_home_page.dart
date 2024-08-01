@@ -46,23 +46,6 @@ class _ClientHomePageState extends ConsumerState<ClientHomePage> {
   }
 
   Widget buildBody() {
-    final response = ref.watch(quizzesProvider);
-
-    if (response.isLoading) {
-      return const CircularProgressIndicator();
-    }
-
-    if (response.value != null && response.value is DataFailed) {
-      return const Center(
-        child: Text("Oops, un truc a mal trouvé"),
-      );
-    }
-
-    final quizzes = response.value?.data?.quizzes;
-    if (quizzes == null) {
-      return const SizedBox();
-    }
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -71,17 +54,50 @@ class _ClientHomePageState extends ConsumerState<ClientHomePage> {
           parentScaffoldKey: _scaffoldKey,
         ),
 
-        // Quiz category count found
-        const Padding(
-          padding: EdgeInsets.only(left: 15),
-          child: Text("10k+ quizz trouvées"),
-        ),
-        const SizedBox(height: 20),
-        // const DifficultyFilter(),
-
-        // list
-        Expanded(child: QuizList(quizzes: quizzes))
+        ...buildResult()
       ],
     );
+  }
+
+  List<Widget> buildResult() {
+    final response = ref.watch(quizzesProvider);
+
+    if (response.isLoading) {
+      return [
+        const Expanded(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        )
+      ];
+    }
+
+    if (response.value != null && response.value is DataFailed) {
+      return [
+        const Expanded(
+          child: Center(
+            child: Text("Oops, un truc a mal trouvé"),
+          ),
+        )
+      ];
+    }
+
+    final quizzes = response.value?.data?.quizzes;
+    if (quizzes == null) {
+      return [];
+    }
+
+    return [
+      // Quiz category count found
+      Padding(
+        padding: const EdgeInsets.only(left: 15),
+        child: Text("${quizzes.length} quizz trouvées"),
+      ),
+      const SizedBox(height: 20),
+      // const DifficultyFilter(),
+
+      // list
+      Expanded(child: QuizList(quizzes: quizzes))
+    ];
   }
 }

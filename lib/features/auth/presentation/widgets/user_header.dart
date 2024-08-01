@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
 
-class UserHeader extends StatefulWidget {
+class UserHeader extends ConsumerWidget {
   const UserHeader({super.key});
 
   @override
-  _UserHeaderState createState() => _UserHeaderState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authProvider);
 
-class _UserHeaderState extends State<UserHeader> {
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
+    if (authState.isLoading || authState.value?.user == null) {
+      return Container();
+    }
+
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Rasolomanana Olivier",
-          style: TextStyle(
+          authState.value!.user!.fullName,
+          style: const TextStyle(
             fontSize: 28,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: 2.5),
+        const SizedBox(height: 2.5),
         Text(
-          "olivier@gmail.com",
-          style: TextStyle(
-            fontSize: 14,
+          authState.value!.user!.email,
+          style: const TextStyle(
+            fontSize: 15,
             color: Colors.black87,
           ),
         ),

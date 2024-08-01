@@ -37,6 +37,8 @@ class Register extends _$Register {
         await repository.saveUser(user);
       }
     } else {
+      state = const AsyncValue.data(null);
+
       final response = dataState.error?.response;
       if (response != null) {
         ref.read(registerFormErrorProvider.notifier).setEmailError(
@@ -44,7 +46,5 @@ class Register extends _$Register {
             );
       }
     }
-
-    state = const AsyncValue<void>.data(null);
   }
 }

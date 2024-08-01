@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:q_learn/core/common/app_bar_back_button.dart';
+import 'package:q_learn/core/common/widgets/app_bar_back_button.dart';
 import 'package:q_learn/features/auth/presentation/widgets/register_form.dart';
 
 @RoutePage()

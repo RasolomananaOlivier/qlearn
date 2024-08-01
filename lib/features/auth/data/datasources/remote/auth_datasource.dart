@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart' hide Headers;
+import 'package:q_learn/core/utils/constants/strings.dart';
 import 'package:q_learn/features/auth/domain/models/requests/login_request.dart';
 import 'package:q_learn/features/auth/domain/models/requests/register_request.dart';
 import 'package:q_learn/features/auth/domain/models/responses/login_response.dart';
@@ -7,7 +8,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'auth_datasource.g.dart';
 
-@RestApi(baseUrl: 'http://10.0.2.2:3000/api/')
+@RestApi(baseUrl: baseUrl)
 abstract class AuthDatasource {
   factory AuthDatasource(Dio dio, {String baseUrl}) = _AuthDatasource;
 

@@ -6,13 +6,13 @@ part of 'quizzes_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$quizzesHash() => r'397ad61407cd5bc5d6594a0f64925a9c7bd015e3';
+String _$quizzesHash() => r'8835512da1356e6033df496f33140682652103ea';
 
-/// See also [quizzes].
-@ProviderFor(quizzes)
-final quizzesProvider =
-    AutoDisposeFutureProvider<DataState<QuizzesResponse>>.internal(
-  quizzes,
+/// See also [Quizzes].
+@ProviderFor(Quizzes)
+final quizzesProvider = AutoDisposeAsyncNotifierProvider<Quizzes,
+    DataState<QuizzesResponse>>.internal(
+  Quizzes.new,
   name: r'quizzesProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$quizzesHash,
@@ -20,6 +20,6 @@ final quizzesProvider =
   allTransitiveDependencies: null,
 );
 
-typedef QuizzesRef = AutoDisposeFutureProviderRef<DataState<QuizzesResponse>>;
+typedef _$Quizzes = AutoDisposeAsyncNotifier<DataState<QuizzesResponse>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

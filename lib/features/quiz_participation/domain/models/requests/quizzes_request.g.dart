@@ -8,10 +8,16 @@ part of 'quizzes_request.dart';
 
 QuizzesRequest _$QuizzesRequestFromJson(Map<String, dynamic> json) =>
     QuizzesRequest(
-      categoryId: (json['categoryId'] as num?)?.toInt(),
+      categoryIds: (json['categoryIds'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
+      difficulty: (json['difficulty'] as num?)?.toInt(),
+      keyword: json['keyword'] as String?,
     );
 
 Map<String, dynamic> _$QuizzesRequestToJson(QuizzesRequest instance) =>
     <String, dynamic>{
-      'categoryId': instance.categoryId,
+      'categoryIds': instance.categoryIds,
+      'difficulty': instance.difficulty,
+      'keyword': instance.keyword,
     };
