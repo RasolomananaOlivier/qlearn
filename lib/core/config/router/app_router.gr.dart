@@ -15,10 +15,10 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    AdminDashboardRoute.name: (routeData) {
+    AdminHomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AdminDashboardPage(),
+        child: const AdminHomePage(),
       );
     },
     ClientHomeRoute.name: (routeData) {
@@ -27,16 +27,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ClientHomePage(),
       );
     },
+    CreationCategoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreationCategoryPage(),
+      );
+    },
     CreationQuestionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CreationQuestionPage(),
       );
     },
-    CreationQuizzRoute.name: (routeData) {
+    CreationQuizRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CreationQuizzPage(),
+        child: const CreationQuizPage(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -83,15 +89,15 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [AdminDashboardPage]
-class AdminDashboardRoute extends PageRouteInfo<void> {
-  const AdminDashboardRoute({List<PageRouteInfo>? children})
+/// [AdminHomePage]
+class AdminHomeRoute extends PageRouteInfo<void> {
+  const AdminHomeRoute({List<PageRouteInfo>? children})
       : super(
-          AdminDashboardRoute.name,
+          AdminHomeRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'AdminDashboardRoute';
+  static const String name = 'AdminHomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -111,6 +117,20 @@ class ClientHomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CreationCategoryPage]
+class CreationCategoryRoute extends PageRouteInfo<void> {
+  const CreationCategoryRoute({List<PageRouteInfo>? children})
+      : super(
+          CreationCategoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreationCategoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [CreationQuestionPage]
 class CreationQuestionRoute extends PageRouteInfo<void> {
   const CreationQuestionRoute({List<PageRouteInfo>? children})
@@ -125,15 +145,15 @@ class CreationQuestionRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CreationQuizzPage]
-class CreationQuizzRoute extends PageRouteInfo<void> {
-  const CreationQuizzRoute({List<PageRouteInfo>? children})
+/// [CreationQuizPage]
+class CreationQuizRoute extends PageRouteInfo<void> {
+  const CreationQuizRoute({List<PageRouteInfo>? children})
       : super(
-          CreationQuizzRoute.name,
+          CreationQuizRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'CreationQuizzRoute';
+  static const String name = 'CreationQuizRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
