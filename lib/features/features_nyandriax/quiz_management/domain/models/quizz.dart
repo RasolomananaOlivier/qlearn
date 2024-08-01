@@ -1,10 +1,10 @@
-class Quiz {
+class Quizz {
   String description;
   String name;
   int difficulty;
   int categoryId;
 
-  Quiz({
+  Quizz({
     required this.description,
     required this.name,
     required this.difficulty,

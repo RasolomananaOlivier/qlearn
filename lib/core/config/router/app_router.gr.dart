@@ -28,21 +28,36 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CreationCategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<CreationCategoryRouteArgs>(
+          orElse: () => const CreationCategoryRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CreationCategoryPage(),
+        child: CreationCategoryPage(
+          key: args.key,
+          category: args.category,
+        ),
       );
     },
     CreationQuestionRoute.name: (routeData) {
+      final args = routeData.argsAs<CreationQuestionRouteArgs>(
+          orElse: () => const CreationQuestionRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CreationQuestionPage(),
+        child: CreationQuestionPage(
+          key: args.key,
+          question: args.question,
+        ),
       );
     },
     CreationQuizRoute.name: (routeData) {
+      final args = routeData.argsAs<CreationQuizRouteArgs>(
+          orElse: () => const CreationQuizRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CreationQuizPage(),
+        child: CreationQuizPage(
+          key: args.key,
+          quiz: args.quiz,
+        ),
       );
     },
     LoginRoute.name: (routeData) {
@@ -122,44 +137,116 @@ class ClientHomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CreationCategoryPage]
-class CreationCategoryRoute extends PageRouteInfo<void> {
-  const CreationCategoryRoute({List<PageRouteInfo>? children})
-      : super(
+class CreationCategoryRoute extends PageRouteInfo<CreationCategoryRouteArgs> {
+  CreationCategoryRoute({
+    Key? key,
+    Map<String, dynamic>? category,
+    List<PageRouteInfo>? children,
+  }) : super(
           CreationCategoryRoute.name,
+          args: CreationCategoryRouteArgs(
+            key: key,
+            category: category,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CreationCategoryRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CreationCategoryRouteArgs> page =
+      PageInfo<CreationCategoryRouteArgs>(name);
+}
+
+class CreationCategoryRouteArgs {
+  const CreationCategoryRouteArgs({
+    this.key,
+    this.category,
+  });
+
+  final Key? key;
+
+  final Map<String, dynamic>? category;
+
+  @override
+  String toString() {
+    return 'CreationCategoryRouteArgs{key: $key, category: $category}';
+  }
 }
 
 /// generated route for
 /// [CreationQuestionPage]
-class CreationQuestionRoute extends PageRouteInfo<void> {
-  const CreationQuestionRoute({List<PageRouteInfo>? children})
-      : super(
+class CreationQuestionRoute extends PageRouteInfo<CreationQuestionRouteArgs> {
+  CreationQuestionRoute({
+    Key? key,
+    Question? question,
+    List<PageRouteInfo>? children,
+  }) : super(
           CreationQuestionRoute.name,
+          args: CreationQuestionRouteArgs(
+            key: key,
+            question: question,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CreationQuestionRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CreationQuestionRouteArgs> page =
+      PageInfo<CreationQuestionRouteArgs>(name);
+}
+
+class CreationQuestionRouteArgs {
+  const CreationQuestionRouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final Question? question;
+
+  @override
+  String toString() {
+    return 'CreationQuestionRouteArgs{key: $key, question: $question}';
+  }
 }
 
 /// generated route for
 /// [CreationQuizPage]
-class CreationQuizRoute extends PageRouteInfo<void> {
-  const CreationQuizRoute({List<PageRouteInfo>? children})
-      : super(
+class CreationQuizRoute extends PageRouteInfo<CreationQuizRouteArgs> {
+  CreationQuizRoute({
+    Key? key,
+    Quizz? quiz,
+    List<PageRouteInfo>? children,
+  }) : super(
           CreationQuizRoute.name,
+          args: CreationQuizRouteArgs(
+            key: key,
+            quiz: quiz,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CreationQuizRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CreationQuizRouteArgs> page =
+      PageInfo<CreationQuizRouteArgs>(name);
+}
+
+class CreationQuizRouteArgs {
+  const CreationQuizRouteArgs({
+    this.key,
+    this.quiz,
+  });
+
+  final Key? key;
+
+  final Quizz? quiz;
+
+  @override
+  String toString() {
+    return 'CreationQuizRouteArgs{key: $key, quiz: $quiz}';
+  }
 }
 
 /// generated route for

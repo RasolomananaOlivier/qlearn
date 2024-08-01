@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/pages/creation_quiz_page.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/pages/detail_quiz_page.dart';
 
 class ListQuizPage extends StatelessWidget {
-  final List<Quiz> quizzes;
+  final List<Quizz> quizzes;
 
   const ListQuizPage({super.key, required this.quizzes});
 

@@ -10,6 +10,9 @@ import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/result_page.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
+import 'package:q_learn/features/features_nyandriax/question_management/domain/models/question.dart';
+
 import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/creation_question_page.dart';
 import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/creation_category_page.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/pages/creation_quiz_page.dart';
@@ -29,13 +32,9 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
 
     debugPrint(resolver.route.name);
 
-    // TODO Delete autorization to access createQuizz/createQuestion/admin/CreationCategory/AdminHome
-    // TODO return initial page with Login
-
     if (authState.user != null ||
         resolver.route.name == LoginRoute.name ||
-        resolver.route.name == RegisterRoute.name ||
-        resolver.route.name == AdminHomeRoute.name) {
+        resolver.route.name == RegisterRoute.name) {
       // we continue navigation
       resolver.next();
     } else {
@@ -78,7 +77,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         // routes go here
         CustomRoute(
           page: RootRoute.page,
-          // initial: true,
+          initial: true,
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,
@@ -157,7 +156,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         // Admin Home
         CustomRoute(
           page: AdminHomeRoute.page,
-          initial: true,
+          // initial: true,
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,

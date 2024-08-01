@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/pages/creation_quiz_page.dart';
 
 class DetailQuizPage extends StatelessWidget {
-  final Quiz quiz;
+  final Quizz quiz;
 
   const DetailQuizPage({super.key, required this.quiz});
 

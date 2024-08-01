@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/domain/models/question.dart';
 import 'package:q_learn/features/features_nyandriax/admin_dashboard/presentation/pages/admin_dashboard_page.dart';
 import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/list_category_page.dart';
@@ -72,20 +72,20 @@ class _AdminHomePageState extends State<AdminHomePage> {
     },
   ];
 
-  final List<Quiz> _quizzes = [
-    Quiz(
+  final List<Quizz> _quizzes = [
+    Quizz(
       description: "djhsdjfh",
       name: "sjfh",
       difficulty: 4,
       categoryId: 2,
     ),
-    Quiz(
+    Quizz(
       description: "Introduction to Flutter",
       name: "Flutter Basics",
       difficulty: 3,
       categoryId: 1,
     ),
-    Quiz(
+    Quizz(
       description: "Advanced React Techniques",
       name: "React Pro",
       difficulty: 5,

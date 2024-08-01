@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/widgets/description_and_name.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/widgets/category_and_difficulty.dart';
 
 @RoutePage()
 class CreationQuizPage extends ConsumerStatefulWidget {
-  final Quiz? quiz;
+  final Quizz? quiz;
 
   const CreationQuizPage({super.key, this.quiz});
 
@@ -54,7 +54,7 @@ class _CreationQuizPageState extends ConsumerState<CreationQuizPage> {
   }
 
   void _saveQuiz() {
-    final newQuiz = Quiz(
+    final newQuiz = Quizz(
       description: _descriptionController.text,
       name: _nameController.text,
       difficulty: int.parse(_difficultyController.text),

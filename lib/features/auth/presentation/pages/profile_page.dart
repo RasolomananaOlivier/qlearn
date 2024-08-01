@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/features/auth/presentation/providers/logout_provider.dart';
 import 'package:q_learn/features/auth/presentation/widgets/user_header.dart';
+import 'package:q_learn/features/features_nyandriax/admin_home/presentation/pages/admin_home_page.dart';
 
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {
@@ -44,9 +45,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
 
               // Admin feature
               buildSection(
-                title: "Administration",
-                iconData: Icons.admin_panel_settings_outlined,
-              ),
+                  title: "Administration",
+                  iconData: Icons.admin_panel_settings_outlined,
+                  onTap: () => const AdminHomePage()),
 
               const SizedBox(height: 30),
 
