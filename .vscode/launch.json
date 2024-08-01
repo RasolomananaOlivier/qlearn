@@ -5,21 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "dev env",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "q_learn (profile mode)",
+            "name": "DEV (real device)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "args": [
+                "--dart-define=BASE_URL=http://localhost:3000/api/",
+            ]
         },
         {
-            "name": "q_learn (release mode)",
+            "name": "DEV (emulator)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
-        }
+            "args": [
+                "--dart-define=BASE_URL=http://http://10.0.2.2:3000/api/"
+            ]
+        },
     ]
 }
