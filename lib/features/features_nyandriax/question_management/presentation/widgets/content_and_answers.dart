@@ -127,7 +127,7 @@ class ContentAndAnswersState extends ConsumerState<ContentAndAnswers> {
               widget.answerControllers.length,
               (index) => AnswerField(
                 key: ValueKey(index),
-                controller: widget.answerControllers[index],
+                // controller: widget.answerControllers[index],
                 index: index,
                 onRemove: () => _removeAnswer(index),
               ),

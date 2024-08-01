@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:q_learn/features/answer_management/domain/models/answer.dart';
-import 'package:q_learn/features/question_management/domain/models/question.dart';
+import 'package:q_learn/core/common/domain/models/answer.dart';
+import 'package:q_learn/core/common/domain/models/question.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/quizz_test_provider.dart';
 
 class QuizzOption extends ConsumerWidget {

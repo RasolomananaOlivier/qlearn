@@ -60,6 +60,22 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    DetailQuestionRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailQuestionRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DetailQuestionPage(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
+    ListQuestionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ListQuestionPage(),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -247,6 +263,58 @@ class CreationQuizRouteArgs {
   String toString() {
     return 'CreationQuizRouteArgs{key: $key, quiz: $quiz}';
   }
+}
+
+/// generated route for
+/// [DetailQuestionPage]
+class DetailQuestionRoute extends PageRouteInfo<DetailQuestionRouteArgs> {
+  DetailQuestionRoute({
+    Key? key,
+    required Question question,
+    List<PageRouteInfo>? children,
+  }) : super(
+          DetailQuestionRoute.name,
+          args: DetailQuestionRouteArgs(
+            key: key,
+            question: question,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'DetailQuestionRoute';
+
+  static const PageInfo<DetailQuestionRouteArgs> page =
+      PageInfo<DetailQuestionRouteArgs>(name);
+}
+
+class DetailQuestionRouteArgs {
+  const DetailQuestionRouteArgs({
+    this.key,
+    required this.question,
+  });
+
+  final Key? key;
+
+  final Question question;
+
+  @override
+  String toString() {
+    return 'DetailQuestionRouteArgs{key: $key, question: $question}';
+  }
+}
+
+/// generated route for
+/// [ListQuestionPage]
+class ListQuestionRoute extends PageRouteInfo<void> {
+  const ListQuestionRoute({List<PageRouteInfo>? children})
+      : super(
+          ListQuestionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ListQuestionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

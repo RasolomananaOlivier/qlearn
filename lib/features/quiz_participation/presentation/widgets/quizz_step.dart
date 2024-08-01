@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/question_management/domain/models/question.dart';
+import 'package:q_learn/core/common/domain/models/question.dart';
 import 'package:q_learn/features/quiz_participation/presentation/widgets/quizz_option.dart';
 
 class QuizzStep extends StatelessWidget {

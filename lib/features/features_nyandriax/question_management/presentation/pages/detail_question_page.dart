@@ -1,11 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/features_nyandriax/question_management/domain/models/question.dart';
-import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/creation_question_page.dart';
+import 'package:q_learn/core/common/domain/models/question.dart';
 
+@RoutePage()
 class DetailQuestionPage extends StatelessWidget {
   final Question question;
 
-  const DetailQuestionPage({super.key, required this.question});
+  const DetailQuestionPage({
+    super.key,
+    required this.question,
+  });
 
   void _showDeleteConfirmationDialog(BuildContext context) {
     showDialog(
@@ -41,8 +45,6 @@ class DetailQuestionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String content = question.content;
-    final int difficulty = question.difficulty;
-    final int categoryId = question.categoryId;
     final List<dynamic> answers = question.answers;
 
     return Scaffold(
@@ -68,66 +70,66 @@ class DetailQuestionPage extends StatelessWidget {
                   ?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            Text(
-              'Difficulté: $difficulty',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: Colors.grey[700]),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Catégorie ID: $categoryId',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: Colors.grey[700]),
-            ),
+            // Text(
+            //   'Difficulté: $difficulty',
+            //   style: Theme.of(context)
+            //       .textTheme
+            //       .titleMedium
+            //       ?.copyWith(color: Colors.grey[700]),
+            // ),
+            // const SizedBox(height: 8),
+            // Text(
+            //   'Catégorie ID: $categoryId',
+            //   style: Theme.of(context)
+            //       .textTheme
+            //       .titleMedium
+            //       ?.copyWith(color: Colors.grey[700]),
+            // ),
             const SizedBox(height: 16),
             const Text(
               'Réponses:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            Flexible(
-              child: ListView.builder(
-                itemCount: answers.length,
-                itemBuilder: (context, index) {
-                  final answer = answers[index];
-                  final answerText =
-                      answer is Answer ? answer.content : answer.toString();
-                  final isCorrect = answer is Answer ? answer.isCorrect : false;
+            // Flexible(
+            //   child: ListView.builder(
+            //     itemCount: answers.length,
+            //     itemBuilder: (context, index) {
+            //       final answer = answers[index];
+            //       final answerText =
+            //           answer is Answer ? answer.content : answer.toString();
+            //       final isCorrect = answer is Answer ? answer.isCorrect : false;
 
-                  return Card(
-                    color: isCorrect ? Colors.green : Colors.blue,
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Text(
-                          answerText,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            //       return Card(
+            //         color: isCorrect ? Colors.green : Colors.blue,
+            //         child: Container(
+            //           padding: const EdgeInsets.all(8.0),
+            //           child: Center(
+            //             child: Text(
+            //               answerText,
+            //               style: const TextStyle(
+            //                 color: Colors.white,
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => CreationQuestionPage(
-                          question: question,
-                        ),
-                      ),
-                    );
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => CreationQuestionPage(
+                    //       question: question,
+                    //     ),
+                    //   ),
+                    // );
                   },
                   child: const Text('Modifier'),
                 ),

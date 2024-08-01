@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:q_learn/core/common/domain/models/question.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
-import 'package:q_learn/features/features_nyandriax/question_management/domain/models/question.dart';
 import 'package:q_learn/features/features_nyandriax/admin_dashboard/presentation/pages/admin_dashboard_page.dart';
 import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/list_category_page.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/list_question_page.dart';
@@ -41,33 +41,27 @@ class _AdminHomePageState extends State<AdminHomePage> {
     {
       'id': 1,
       'content': 'Quel est le résultat de 2 + 2 ?',
-      'difficulty': 3,
-      'categoryId': 1,
       'answers': [
-        {'content': '3', 'isCorrect': false},
-        {'content': '4', 'isCorrect': true},
+        {'id': 1, 'content': '3', 'isCorrect': false},
+        {'id': 1, 'content': '4', 'isCorrect': true},
       ]
     },
     {
       'id': 2,
       'content': 'Quelle est la capitale de la France ?',
-      'difficulty': 2,
-      'categoryId': 2,
       'answers': [
-        {'content': 'Berlin', 'isCorrect': false},
-        {'content': 'Madrid', 'isCorrect': false},
-        {'content': 'Rome', 'isCorrect': false}
+        {'id': 1, 'content': 'Berlin', 'isCorrect': false},
+        {'id': 1, 'content': 'Madrid', 'isCorrect': false},
+        {'id': 1, 'content': 'Rome', 'isCorrect': false}
       ]
     },
     {
       'id': 3,
       'content': 'Quelle est la couleur du ciel par temps clair ?',
-      'difficulty': 1,
-      'categoryId': 3,
       'answers': [
-        {'content': 'Rouge', 'isCorrect': false},
-        {'content': 'Bleu', 'isCorrect': true},
-        {'content': 'Jaune', 'isCorrect': false}
+        {'id': 1, 'content': 'Rouge', 'isCorrect': false},
+        {'id': 1, 'content': 'Bleu', 'isCorrect': true},
+        {'id': 1, 'content': 'Jaune', 'isCorrect': false}
       ]
     },
   ];
@@ -146,7 +140,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
           AdminDashboardPage(onItemTapped: _onItemTapped),
           ListCategoryPage(categories: _categories),
           ListQuizPage(quizzes: _quizzes),
-          ListQuestionPage(questions: questions),
+          const ListQuestionPage(),
         ],
       ),
     );
