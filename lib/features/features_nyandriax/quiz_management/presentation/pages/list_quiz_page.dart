@@ -16,7 +16,10 @@ class ListQuizPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: const QuizList(),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: QuizList(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(

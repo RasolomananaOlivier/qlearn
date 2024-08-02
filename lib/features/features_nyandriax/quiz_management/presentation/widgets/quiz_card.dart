@@ -14,7 +14,7 @@ class QuizCard extends StatelessWidget {
       elevation: 0,
       color: Colors.blueGrey.shade50,
       margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,20 +26,6 @@ class QuizCard extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () => {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueAccent.shade400,
-              ),
-              child: const Text(
-                "Voir",
-                style: TextStyle(
-                  color: Colors.white,
-                  // decoration: TextDecoration.underline,
-                ),
-              ),
-            )
           ],
         ),
       ),
