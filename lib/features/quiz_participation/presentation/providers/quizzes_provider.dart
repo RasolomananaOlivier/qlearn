@@ -1,7 +1,7 @@
 import 'package:q_learn/core/utils/resources/data_state.dart';
 import 'package:q_learn/features/quiz_participation/domain/models/requests/quizzes_request.dart';
 import 'package:q_learn/features/quiz_participation/domain/models/responses/quizzes_response.dart';
-import 'package:q_learn/features/quiz_participation/domain/repositories/quiz_repository.dart';
+import 'package:q_learn/core/common/domain/repositories/quiz_repository.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/categories_provider.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/difficulty_provider.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/search_keyword_provider.dart';
