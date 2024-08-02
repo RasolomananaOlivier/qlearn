@@ -19,3 +19,17 @@ Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'content': instance.content,
       'answers': instance.answers,
     };
+
+QuestionCount _$QuestionCountFromJson(Map<String, dynamic> json) =>
+    QuestionCount(
+      count: (json['count'] as num).toInt(),
+      success: (json['success'] as num).toInt(),
+      rate: (json['rate'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$QuestionCountToJson(QuestionCount instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+      'success': instance.success,
+      'rate': instance.rate,
+    };
