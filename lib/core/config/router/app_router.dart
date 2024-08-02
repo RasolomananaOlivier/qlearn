@@ -10,11 +10,10 @@ import 'package:q_learn/core/common/widgets/root_page.dart';
 import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/list_category_page.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/detail_question_page.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/list_question_page.dart';
-import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/core/common/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/result_page.dart';
-import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
 
 import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/creation_question_page.dart';
 import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/creation_category_page.dart';

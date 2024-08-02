@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/core/config/router/app_router.dart';
 import 'package:q_learn/core/utils/resources/data_state.dart';
-import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/core/common/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/submit_quizz_provider.dart';
 
 @RoutePage()

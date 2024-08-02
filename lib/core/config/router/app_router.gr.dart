@@ -238,7 +238,7 @@ class CreationQuestionRouteArgs {
 class CreationQuizRoute extends PageRouteInfo<CreationQuizRouteArgs> {
   CreationQuizRoute({
     Key? key,
-    Quizz? quiz,
+    Quiz? quiz,
     List<PageRouteInfo>? children,
   }) : super(
           CreationQuizRoute.name,
@@ -263,7 +263,7 @@ class CreationQuizRouteArgs {
 
   final Key? key;
 
-  final Quizz? quiz;
+  final Quiz? quiz;
 
   @override
   String toString() {

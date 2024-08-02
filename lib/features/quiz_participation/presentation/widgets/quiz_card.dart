@@ -4,7 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:q_learn/core/config/router/app_router.dart';
 import 'package:q_learn/core/utils/resources/data_state.dart';
-import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
+import 'package:q_learn/core/common/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/domain/repositories/question_repository.dart';
 import 'package:q_learn/features/quiz_participation/presentation/providers/quizz_test_provider.dart';
 import 'package:q_learn/locator.dart';

@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
+import 'package:q_learn/core/common/domain/models/quiz.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/widgets/description_and_name.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/widgets/category_and_difficulty.dart';
 
 @RoutePage()
 class CreationQuizPage extends ConsumerStatefulWidget {
-  final Quizz? quiz;
+  final Quiz? quiz;
 
   const CreationQuizPage({super.key, this.quiz});
 
@@ -25,13 +25,13 @@ class _CreationQuizPageState extends ConsumerState<CreationQuizPage> {
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController(text: widget.quiz?.name ?? '');
-    _descriptionController =
-        TextEditingController(text: widget.quiz?.description ?? '');
-    _difficultyController =
-        TextEditingController(text: widget.quiz?.difficulty.toString() ?? '');
-    _categoryIdController =
-        TextEditingController(text: widget.quiz?.categoryId.toString() ?? '');
+    // _nameController = TextEditingController(text: widget.quiz?.name ?? '');
+    // _descriptionController =
+    //     TextEditingController(text: widget.quiz?.description ?? '');
+    // _difficultyController =
+    //     TextEditingController(text: widget.quiz?.difficulty.toString() ?? '');
+    // _categoryIdController =
+    //     TextEditingController(text: widget.quiz?.categoryId.toString() ?? '');
   }
 
   @override
@@ -54,12 +54,12 @@ class _CreationQuizPageState extends ConsumerState<CreationQuizPage> {
   }
 
   void _saveQuiz() {
-    final newQuiz = Quizz(
-      description: _descriptionController.text,
-      name: _nameController.text,
-      difficulty: int.parse(_difficultyController.text),
-      categoryId: int.parse(_categoryIdController.text),
-    );
+    // final newQuiz = Quizz(
+    //   description: _descriptionController.text,
+    //   name: _nameController.text,
+    //   difficulty: int.parse(_difficultyController.text),
+    //   categoryId: int.parse(_categoryIdController.text),
+    // );
 
     if (widget.quiz != null) {
       // Modifier un quiz existant

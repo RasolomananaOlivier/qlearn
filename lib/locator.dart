@@ -23,6 +23,15 @@ import 'package:q_learn/features/features_nyandriax/question_management/domain/r
 import 'package:q_learn/features/features_nyandriax/question_management/data/repositories/question_repository_impl.dart'
     as nyandriax;
 
+// CATEGORY SECTION IMPORT START
+// CATEGORY SECTION IMPORT END
+
+// QUIZ SETION IMPORT START
+import 'package:q_learn/features/features_nyandriax/quiz_management/data/datasources/remote/admin_quiz_datasource.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/domain/repositories/admin_quiz_repository.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/data/repositories/admin_quiz_repository_impl.dart';
+// QUIZ SETION IMPORT END
+
 final locator = GetIt.instance;
 
 Future<void> initializeDependencies() async {
@@ -52,6 +61,11 @@ Future<void> initializeDependencies() async {
     () => CategoryDatasource(locator.get<Dio>()),
   );
 
+  // Registering data sources quiz nyandriax
+  locator.registerLazySingleton<AdminQuizDatasource>(
+    () => AdminQuizDatasource(locator.get<Dio>()),
+  );
+
   // Registering repositories
   locator.registerSingleton<AuthRepository>(
     AuthRepositoryImpl(locator<AuthDatasource>()),
@@ -74,5 +88,10 @@ Future<void> initializeDependencies() async {
     () => CategoryRepositoryImpl(
       locator.get<CategoryDatasource>(),
     ),
+  );
+
+  // Registering repositories for nyandriax features
+  locator.registerLazySingleton<AdminQuizRepository>(
+    () => AdminQuizRepositoryImpl(locator.get<AdminQuizDatasource>()),
   );
 }

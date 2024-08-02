@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
+import 'package:q_learn/core/common/domain/models/quiz.dart';
 import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/pages/creation_quiz_page.dart';
 
 class DetailQuizPage extends StatelessWidget {
-  final Quizz quiz;
+  final Quiz quiz;
 
   const DetailQuizPage({super.key, required this.quiz});
 
@@ -70,14 +70,6 @@ class DetailQuizPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8.0),
-            Text(
-              '${quiz.categoryId}',
-              style: const TextStyle(
-                fontSize: 16.0,
-                color: Colors.black87,
-              ),
-            ),
-            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
