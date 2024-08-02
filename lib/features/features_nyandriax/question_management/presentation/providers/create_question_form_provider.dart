@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'create_question_form_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class CreateQuestionForm extends _$CreateQuestionForm {
   @override
   CreateQuestionRequest build() {
@@ -24,8 +24,8 @@ class CreateQuestionForm extends _$CreateQuestionForm {
     final int quizId = formValues['quizId'];
 
     state = CreateQuestionRequest(
-      answers: state.answers,
       quizId: quizId,
+      answers: state.answers,
       content: state.content,
     );
   }
@@ -50,5 +50,9 @@ class CreateQuestionForm extends _$CreateQuestionForm {
       quizId: state.quizId,
       content: state.content,
     );
+  }
+
+  void reset() {
+    state = CreateQuestionRequest();
   }
 }

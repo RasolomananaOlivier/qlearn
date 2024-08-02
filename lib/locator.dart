@@ -8,11 +8,11 @@ import 'package:q_learn/features/auth/data/datasources/remote/auth_datasource.da
 import 'package:q_learn/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:q_learn/features/auth/domain/repositories/auth_repository.dart';
 import 'package:q_learn/features/quiz_participation/data/datasources/remote/question_datasource.dart';
-import 'package:q_learn/features/quiz_participation/data/datasources/remote/quiz_datasource.dart';
+import 'package:q_learn/core/common/data/datasources/remote/quiz_datasource.dart';
 import 'package:q_learn/features/quiz_participation/data/repositories/question_repository_impl.dart';
-import 'package:q_learn/features/quiz_participation/data/repositories/quiz_repository_impl.dart';
+import 'package:q_learn/core/common/data/repositories/quiz_repository_impl.dart';
 import 'package:q_learn/features/quiz_participation/domain/repositories/question_repository.dart';
-import 'package:q_learn/features/quiz_participation/domain/repositories/quiz_repository.dart';
+import 'package:q_learn/core/common/domain/repositories/quiz_repository.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/data/datasources/remote/question_datasource.dart'
     as nyandriax;
 import 'package:q_learn/features/features_nyandriax/question_management/domain/repositories/question_repository.dart'

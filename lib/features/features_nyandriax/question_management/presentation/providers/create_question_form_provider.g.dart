@@ -7,12 +7,12 @@ part of 'create_question_form_provider.dart';
 // **************************************************************************
 
 String _$createQuestionFormHash() =>
-    r'd3c2c18bd22674baff0f5de849d7438777162ef9';
+    r'e735aabf588cd8c7f6bbc237c9655b890220de99';
 
 /// See also [CreateQuestionForm].
 @ProviderFor(CreateQuestionForm)
-final createQuestionFormProvider = AutoDisposeNotifierProvider<
-    CreateQuestionForm, CreateQuestionRequest>.internal(
+final createQuestionFormProvider =
+    NotifierProvider<CreateQuestionForm, CreateQuestionRequest>.internal(
   CreateQuestionForm.new,
   name: r'createQuestionFormProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final createQuestionFormProvider = AutoDisposeNotifierProvider<
   allTransitiveDependencies: null,
 );
 
-typedef _$CreateQuestionForm = AutoDisposeNotifier<CreateQuestionRequest>;
+typedef _$CreateQuestionForm = Notifier<CreateQuestionRequest>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -58,81 +58,83 @@ class CreateQuestionStepOneState extends ConsumerState<CreateQuestionStepOne> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: FormBuilder(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              const Text(
-                'Question*',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 8),
-              FormBuilderTextField(
-                name: 'content',
-                keyboardType: TextInputType.text,
-                // controller: widget.contentController,
-                decoration: const InputDecoration(
-                  hintText: 'Entrer votre question',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ajouter une question'),
+      ),
+      // Validate and next button
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: ElevatedButton(
+          onPressed: handleSubmit,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent.shade400,
+            minimumSize: const Size.fromHeight(44),
+          ),
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: FormBuilder(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const Text(
+                  'Question*',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(),
-                ]),
-              ),
-              const SizedBox(height: 40),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Réponses de la question*',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Mettez plus de réponses',
-                    style: TextStyle(fontSize: 12, color: Colors.blueGrey),
-                  )
-                ],
-              ),
-              const SizedBox(height: 8),
-              ...buildAnswerFields(),
-              buildAddAnswerButton(),
-              const SizedBox(height: 40),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: handleSubmit,
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.blue,
-                    elevation: 0,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 24.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6.0),
+                const SizedBox(height: 8),
+                FormBuilderTextField(
+                  name: 'content',
+                  keyboardType: TextInputType.text,
+                  // controller: widget.contentController,
+                  decoration: const InputDecoration(
+                    hintText: 'Entrer votre question',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
                     ),
-                    side:
-                        const BorderSide(color: Colors.blueAccent, width: 1.0),
                   ),
-                  child: const Text(
-                    'Suivant',
-                    style: TextStyle(fontSize: 16.0),
-                  ),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                  ]),
                 ),
-              ),
-            ],
+                const SizedBox(height: 40),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      'Réponses de la question*',
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Mettez plus de réponses',
+                      style: TextStyle(fontSize: 12, color: Colors.blueGrey),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 8),
+                ...buildAnswerFields(),
+                buildAddAnswerButton(),
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
         ),
       ),

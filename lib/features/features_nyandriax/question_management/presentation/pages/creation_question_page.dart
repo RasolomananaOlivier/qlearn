@@ -32,17 +32,6 @@ class _CreationQuestionPageState extends ConsumerState<CreationQuestionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.question != null
-            ? 'Modifier la question'
-            : 'Créer une question'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
@@ -54,23 +43,6 @@ class _CreationQuestionPageState extends ConsumerState<CreationQuestionPage> {
             handleNext: handleNext,
             handlePrevious: handlePrevious,
           ),
-          // ContentAndAnswers(
-          //   contentController: _contentController,
-          //   answerControllers: _answerControllers,
-          //   onNext: _nextPage,
-          // ),
-          // DifficultyAndCategory(
-          //   difficultyController: _difficultyController,
-          //   categoryIdController: _categoryIdController,
-          //   onNext: _nextPage,
-          //   onPrevious: _previousPage,
-          // ),
-          // CorrectAnswers(
-          //   answerControllers: _answerControllers,
-          //   answerCorrectness: _answerCorrectness,
-          //   onPrevious: _previousPage,
-          //   onSave: _saveQuestion,
-          // ),
         ],
       ),
     );
