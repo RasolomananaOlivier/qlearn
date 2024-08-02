@@ -36,7 +36,8 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
 
     if (authState.user != null ||
         resolver.route.name == LoginRoute.name ||
-        resolver.route.name == RegisterRoute.name) {
+        resolver.route.name == RegisterRoute.name ||
+        resolver.route.name == AdminHomeRoute.name) {
       // we continue navigation
       resolver.next();
     } else {

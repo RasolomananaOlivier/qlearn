@@ -19,6 +19,9 @@ import 'package:q_learn/features/features_nyandriax/question_management/domain/r
     as nyandriax;
 import 'package:q_learn/features/features_nyandriax/question_management/data/repositories/question_repository_impl.dart'
     as nyandriax;
+import 'package:q_learn/features/features_nyandriax/category_management/data/datasources/remote/category_datasource.dart';
+import 'package:q_learn/features/features_nyandriax/category_management/domain/repositories/category_repository.dart';
+import 'package:q_learn/features/features_nyandriax/category_management/data/repositories/category_repository_impl.dart';
 
 final locator = GetIt.instance;
 
@@ -45,6 +48,9 @@ Future<void> initializeDependencies() async {
   locator.registerLazySingleton<nyandriax.QuestionDatasource>(
     () => nyandriax.QuestionDatasource(locator.get<Dio>()),
   );
+  locator.registerLazySingleton<CategoryDatasource>(
+    () => CategoryDatasource(locator.get<Dio>()),
+  );
 
   // Registering repositories
   locator.registerSingleton<AuthRepository>(
@@ -62,6 +68,11 @@ Future<void> initializeDependencies() async {
   locator.registerLazySingleton<nyandriax.QuestionRepository>(
     () => nyandriax.QuestionRepositoryImpl(
       locator.get<nyandriax.QuestionDatasource>(),
+    ),
+  );
+  locator.registerLazySingleton<CategoryRepository>(
+    () => CategoryRepositoryImpl(
+      locator.get<CategoryDatasource>(),
     ),
   );
 }

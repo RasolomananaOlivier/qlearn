@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/creation_category_page.dart';
+// import 'package:q_learn/core/common/domain/cat';
 
 class DetailCategoryPage extends StatelessWidget {
   final Map<String, dynamic> category;
@@ -43,12 +44,12 @@ class DetailCategoryPage extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            CreationCategoryPage(category: category),
-                      ),
-                    );
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) =>
+                    // CreationCategoryPage(category: category),
+                    //   ),
+                    // );
                   },
                   child: const Text('Modifier'),
                 ),
