@@ -31,24 +31,7 @@ class _CreationCategoryPageState extends ConsumerState<CreationCategoryPage> {
   }
 
   void _submitForm() {
-    if (_formKey.currentState?.saveAndValidate() ?? false) {
-      // Form is valid, handle the data
-      final formData = _formKey.currentState?.value;
-      if (widget.category != null) {
-        // Update existing category
-        print("Update category with data: $formData");
-      } else {
-        // Create new category
-        print("Create new category with data: $formData");
-      }
-
-      // Perform actions such as saving to a database
-
-      Navigator.of(context).pop();
-    } else {
-      // Form is invalid, show errors
-      print("Form validation failed");
-    }
+    if (_formKey.currentState?.saveAndValidate() ?? false) {}
   }
 
   @override
@@ -96,32 +79,6 @@ class _CreationCategoryPageState extends ConsumerState<CreationCategoryPage> {
                 ]),
               ),
               const SizedBox(height: 25),
-              const Text(
-                'Description*',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              FormBuilderTextField(
-                name: 'description',
-                keyboardType: TextInputType.text,
-                minLines: 3,
-                maxLines: null,
-                initialValue: widget.category?['description'],
-                decoration: const InputDecoration(
-                  hintText: 'Entrer la description de la catégorie',
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                ),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(),
-                ]),
-              ),
-              const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
