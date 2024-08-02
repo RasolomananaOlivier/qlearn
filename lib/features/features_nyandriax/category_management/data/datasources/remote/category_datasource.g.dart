@@ -21,13 +21,13 @@ class _CategoryDatasource implements CategoryDatasource {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<GetCategoriesResponse>> getCategories() async {
+  Future<HttpResponse<QuizzCategoriesResponse>> getCategories() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<GetCategoriesResponse>>(Options(
+        _setStreamType<HttpResponse<QuizzCategoriesResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,7 +43,7 @@ class _CategoryDatasource implements CategoryDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = GetCategoriesResponse.fromJson(_result.data!);
+    final _value = QuizzCategoriesResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
