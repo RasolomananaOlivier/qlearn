@@ -1,15 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:q_learn/core/common/domain/models/question.dart';
 import 'package:q_learn/features/auth/presentation/pages/login_page.dart';
 import 'package:q_learn/features/auth/presentation/pages/register_page.dart';
 import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
 import 'package:q_learn/features/auth/presentation/pages/profile_page.dart';
 import 'package:q_learn/core/common/widgets/root_page.dart';
+import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/detail_question_page.dart';
+import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/list_question_page.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/client_home_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/quizz_page.dart';
 import 'package:q_learn/features/quiz_participation/presentation/pages/result_page.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/domain/models/quizz.dart';
+
+import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/creation_question_page.dart';
+import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/creation_category_page.dart';
+import 'package:q_learn/features/features_nyandriax/quiz_management/presentation/pages/creation_quiz_page.dart';
+import 'package:q_learn/features/features_nyandriax/admin_home/presentation/pages/admin_home_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -111,6 +120,73 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
             );
           },
         ),
+        /* ___________________________ ADMIN ________________________________  */
+        CustomRoute(
+          page: DetailQuestionRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        CustomRoute(
+          page: ListQuestionRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        // Creation Question Page in Admin
+        CustomRoute(
+          page: CreationQuestionRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        // Creation Category Page in Admin
+        CustomRoute(
+          page: CreationCategoryRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        // Creation Quizz Page in Admin
+        CustomRoute(
+          page: CreationQuizRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        // Admin Home
+        CustomRoute(
+          page: AdminHomeRoute.page,
+          // initial: true,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
+        /** ________________________________________________________________________ */
 
         CustomRoute(
           page: ResultRoute.page,
