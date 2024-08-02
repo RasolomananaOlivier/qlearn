@@ -81,7 +81,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
         children: <Widget>[
           AdminDashboardPage(onItemTapped: _onItemTapped),
           const ListCategoryPage(),
-          ListQuizPage(quizzes: _quizzes),
+          const ListQuizPage(),
           const ListQuestionPage(),
         ],
       ),
