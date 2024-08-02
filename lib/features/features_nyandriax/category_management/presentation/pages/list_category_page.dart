@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/detail_category_page.dart';
 import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/creation_category_page.dart';
+import 'package:q_learn/features/features_nyandriax/category_management/presentation/widgets/category_list.dart';
 
 class ListCategoryPage extends StatelessWidget {
   final List<Map<String, dynamic>> categories;
@@ -19,33 +19,9 @@ class ListCategoryPage extends StatelessWidget {
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: categories.length,
-          itemBuilder: (context, index) {
-            final category = categories[index];
-            return Card(
-              elevation: 4,
-              margin: const EdgeInsets.symmetric(vertical: 8.0),
-              child: ListTile(
-                title: Text(
-                  category['name'],
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(category['description']),
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          DetailCategoryPage(category: category),
-                    ),
-                  );
-                },
-              ),
-            );
-          },
-        ),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: CategoryList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

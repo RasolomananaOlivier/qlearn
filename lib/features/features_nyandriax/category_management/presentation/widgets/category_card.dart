@@ -1,12 +1,12 @@
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:q_learn/core/common/domain/models/category.dart';
+import 'package:q_learn/core/common/domain/models/quiz_category.dart';
 // import 'package:q_learn/core/config/router/app_router.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key, required this.category});
 
-  final Category category;
+  final QuizCategory category;
 
   @override
   Widget build(BuildContext context) {
