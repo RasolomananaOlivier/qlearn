@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:q_learn/core/utils/constants/strings.dart';
+import 'package:q_learn/features/features_nyandriax/question_management/domain/models/requests/create_question_request.dart';
+import 'package:q_learn/features/features_nyandriax/question_management/domain/models/responses/create_question_response.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/domain/models/responses/get_questions_response.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -11,4 +13,9 @@ abstract class QuestionDatasource {
 
   @GET('/questions')
   Future<HttpResponse<GetQuestionsResponse>> getQuestions();
+
+  @POST('/questions')
+  Future<HttpResponse<CreateQuestionResponse>> createQuestion(
+    @Body() CreateQuestionRequest body,
+  );
 }
