@@ -1,5 +1,6 @@
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:q_learn/core/common/domain/models/quiz.dart';
 // import 'package:q_learn/core/config/router/app_router.dart';
 
@@ -26,6 +27,42 @@ class QuizCard extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
+
+            const SizedBox(height: 10),
+
+            // Difficulty Rating
+            RatingBar.builder(
+              itemCount: 5,
+              initialRating: quiz.difficulty,
+              ignoreGestures: true,
+              itemSize: 18,
+              itemBuilder: (context, index) {
+                return const Icon(
+                  Icons.star,
+                  color: Colors.blue,
+                );
+              },
+              onRatingUpdate: (value) {},
+            ),
+            const SizedBox(height: 10),
+
+            // Quizzes count
+            Text(quiz.description),
+            const SizedBox(height: 10),
+
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent.shade400,
+              ),
+              child: const Text(
+                "Voir les détails",
+                style: TextStyle(
+                  color: Colors.white,
+                  // decoration: TextDecoration.underline,
+                ),
+              ),
+            )
           ],
         ),
       ),
