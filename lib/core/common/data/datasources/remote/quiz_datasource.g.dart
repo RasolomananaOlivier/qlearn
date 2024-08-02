@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'question_datasource.dart';
+part of 'quiz_datasource.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'question_datasource.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _QuestionDatasource implements QuestionDatasource {
-  _QuestionDatasource(
+class _QuizDatasource implements QuizDatasource {
+  _QuizDatasource(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,20 +21,22 @@ class _QuestionDatasource implements QuestionDatasource {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<GetQuestionsResponse>> getQuestions() async {
+  Future<HttpResponse<QuizzesResponse>> getQuizzes(
+      Map<String, dynamic> queries) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<GetQuestionsResponse>>(Options(
+        _setStreamType<HttpResponse<QuizzesResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/questions',
+              '/quizzes',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,28 +45,31 @@ class _QuestionDatasource implements QuestionDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = GetQuestionsResponse.fromJson(_result.data!);
+    final _value = QuizzesResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<CreateQuestionResponse>> createQuestion(
-      CreateQuestionRequest body) async {
+  Future<HttpResponse<SubmitQuizzResponse>> submitQuizz(
+    String authorization,
+    SubmitQuizzRequest body,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<CreateQuestionResponse>>(Options(
+        _setStreamType<HttpResponse<SubmitQuizzResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/questions',
+              '/sessions',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -73,7 +78,7 @@ class _QuestionDatasource implements QuestionDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = CreateQuestionResponse.fromJson(_result.data!);
+    final _value = SubmitQuizzResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
