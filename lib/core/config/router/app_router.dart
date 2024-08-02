@@ -79,7 +79,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         // routes go here
         CustomRoute(
           page: RootRoute.page,
-          // initial: true,
+          initial: true,
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,
@@ -187,7 +187,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         // Admin Home
         CustomRoute(
           page: AdminHomeRoute.page,
-          initial: true,
+          // initial: true,
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,

@@ -34,9 +34,9 @@ class Quiz {
 
 @JsonSerializable()
 class QuizCount {
-  final int quizzes;
+  final int sessions;
 
-  QuizCount({required this.quizzes});
+  QuizCount({required this.sessions});
 
   factory QuizCount.fromJson(Map<String, dynamic> json) =>
       _$QuizCountFromJson(json);

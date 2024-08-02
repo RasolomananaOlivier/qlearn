@@ -30,9 +30,9 @@ Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
     };
 
 QuizCount _$QuizCountFromJson(Map<String, dynamic> json) => QuizCount(
-      quizzes: (json['quizzes'] as num).toInt(),
+      sessions: (json['sessions'] as num).toInt(),
     );
 
 Map<String, dynamic> _$QuizCountToJson(QuizCount instance) => <String, dynamic>{
-      'quizzes': instance.quizzes,
+      'sessions': instance.sessions,
     };
