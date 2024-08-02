@@ -15,6 +15,9 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) => Quiz(
               .toList() ??
           const [],
       difficulty: (json['difficulty'] as num?)?.toDouble() ?? 1,
+      count: json['_count'] == null
+          ? null
+          : QuizCount.fromJson(json['_count'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
@@ -23,4 +26,13 @@ Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
       'description': instance.description,
       'difficulty': instance.difficulty,
       'questions': instance.questions,
+      '_count': instance.count,
+    };
+
+QuizCount _$QuizCountFromJson(Map<String, dynamic> json) => QuizCount(
+      quizzes: (json['quizzes'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$QuizCountToJson(QuizCount instance) => <String, dynamic>{
+      'quizzes': instance.quizzes,
     };
