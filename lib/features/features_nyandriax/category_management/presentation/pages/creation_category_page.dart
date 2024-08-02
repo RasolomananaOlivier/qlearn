@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:q_learn/core/config/router/app_router.dart';
+import 'package:q_learn/features/features_nyandriax/category_management/presentation/providers/categories_provider.dart';
 
 @RoutePage()
 class CreationCategoryPage extends ConsumerStatefulWidget {
@@ -31,7 +33,13 @@ class _CreationCategoryPageState extends ConsumerState<CreationCategoryPage> {
   }
 
   void _submitForm() {
-    if (_formKey.currentState?.saveAndValidate() ?? false) {}
+    if (_formKey.currentState?.saveAndValidate() ?? false) {
+      ref
+          .read(categoriesProvider.notifier)
+          .createCategory(_formKey.currentState?.value['name']);
+
+      context.replaceRoute(const ListCategoryRoute());
+    }
   }
 
   @override
@@ -47,6 +55,25 @@ class _CreationCategoryPageState extends ConsumerState<CreationCategoryPage> {
           },
         ),
       ),
+
+      // Validate and next button
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: ElevatedButton(
+          onPressed: _submitForm,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent.shade400,
+            minimumSize: const Size.fromHeight(44),
+          ),
+          child: const Text(
+            "Ajouter",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: FormBuilder(
@@ -56,13 +83,14 @@ class _CreationCategoryPageState extends ConsumerState<CreationCategoryPage> {
             mainAxisSize: MainAxisSize.max,
             children: [
               const Text(
-                'Nom*',
+                'Nom de la catégorie',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
               ),
+              const SizedBox(height: 10),
               FormBuilderTextField(
                 name: 'name',
                 keyboardType: TextInputType.text,
@@ -79,28 +107,6 @@ class _CreationCategoryPageState extends ConsumerState<CreationCategoryPage> {
                 ]),
               ),
               const SizedBox(height: 25),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _submitForm,
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.blue,
-                    elevation: 0,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 24.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6.0),
-                    ),
-                    side:
-                        const BorderSide(color: Colors.blueAccent, width: 1.0),
-                  ),
-                  child: Text(
-                    widget.category != null ? 'Modifier' : 'Créer',
-                    style: const TextStyle(fontSize: 16.0),
-                  ),
-                ),
-              ),
             ],
           ),
         ),

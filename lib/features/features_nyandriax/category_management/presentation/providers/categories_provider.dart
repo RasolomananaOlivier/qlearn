@@ -21,7 +21,7 @@ class Categories extends _$Categories {
   Future<void> createCategory(String name) async {
     final repository = locator.get<CategoryRepository>();
 
-    final future = repository.createCategory(
+    await repository.createCategory(
       CreateCategoryRequest(name: name),
     );
 

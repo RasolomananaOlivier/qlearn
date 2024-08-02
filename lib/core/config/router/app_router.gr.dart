@@ -70,6 +70,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ListCategoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ListCategoryPage(),
+      );
+    },
     ListQuestionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -301,6 +307,20 @@ class DetailQuestionRouteArgs {
   String toString() {
     return 'DetailQuestionRouteArgs{key: $key, question: $question}';
   }
+}
+
+/// generated route for
+/// [ListCategoryPage]
+class ListCategoryRoute extends PageRouteInfo<void> {
+  const ListCategoryRoute({List<PageRouteInfo>? children})
+      : super(
+          ListCategoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ListCategoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

@@ -7,6 +7,7 @@ import 'package:q_learn/features/auth/presentation/pages/register_page.dart';
 import 'package:q_learn/features/auth/presentation/providers/auth_provider.dart';
 import 'package:q_learn/features/auth/presentation/pages/profile_page.dart';
 import 'package:q_learn/core/common/widgets/root_page.dart';
+import 'package:q_learn/features/features_nyandriax/category_management/presentation/pages/list_category_page.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/detail_question_page.dart';
 import 'package:q_learn/features/features_nyandriax/question_management/presentation/pages/list_question_page.dart';
 import 'package:q_learn/features/quiz_management/domain/models/quiz.dart';
@@ -79,7 +80,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         // routes go here
         CustomRoute(
           page: RootRoute.page,
-          initial: true,
+          // initial: true,
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,
@@ -174,10 +175,20 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
           },
         ),
 
+        CustomRoute(
+          page: ListCategoryRoute.page,
+          customRouteBuilder: (context, child, page) {
+            return CupertinoPageRoute(
+              settings: page,
+              builder: (context) => child,
+            );
+          },
+        ),
+
         // Admin Home
         CustomRoute(
           page: AdminHomeRoute.page,
-          // initial: true,
+          initial: true,
           customRouteBuilder: (context, child, page) {
             return CupertinoPageRoute(
               settings: page,
